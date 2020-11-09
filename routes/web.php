@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CuotasController;
 use App\Http\Controllers\SedesController;
+use App\Http\Controllers\SociosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,4 @@ Route::get('/', function () {
 
 Route::get('/cuotas', [CuotasController::class, 'index']);
 Route::get('/sedes', [SedesController::class, 'index']);
+Route::get('/socios', [SociosController::class, 'index']);
