@@ -29,7 +29,11 @@ class CuotasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tipo = $request->get('tipo');
+        $cantidad = $request->get('cantidad');
+        $values = [$tipo, $cantidad];
+        DB::insert("execute insertar_tipo_cuota ?,?", $values);
+        return redirect('/cuotas')->with('success', 'se agregó la cuota');
     }
 
     /**
