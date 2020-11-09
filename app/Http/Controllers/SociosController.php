@@ -47,7 +47,7 @@ class SociosController extends Controller
         $sede_fk = $request->get("sede_fk");
         $values = [$nombre, $apellido1, $apellido2, $direccion, $fecha_pago, $cuenta_bancaria, $tipo_cuota_fk, $sede_fk];
         
-        DB::insert(DB::raw("execute insertar_socio ?,?,?,?,?,?,?,?"), $values);
+        DB::insert("execute insertar_socio ?,?,?,?,?,?,?,?", $values);
         return redirect('/socios')->with('success', 'se agregó el socio');
     }
 
