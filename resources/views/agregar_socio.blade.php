@@ -10,25 +10,26 @@
     <body>
 
     <style>
-            form{
-                margin-top: 50px;
-            }
+        
+        form{
+            margin-top: 50px;
+        }
 
-            .fas:hover{
-                cursor: pointer;
-            }
+        .fas:hover{
+            cursor: pointer;
+        }
 
-            #head{
-                margin: auto;
-            }
+        #head{
+            margin: auto;
+        }
 
-            button{
-                margin-top: 50px;
-                margin: auto;
-            }
+        button{
+            margin-top: 50px;
+            margin: auto;
+        }
 
     </style>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">ACNUR Systems</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,13 +41,13 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Socios</a>
+                    <a onclick="window.location='/socios'"  class="nav-link">Socios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sedes</a>
+                    <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Coutas</a>
+                <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
                 </li>
                 </ul>
             </div>

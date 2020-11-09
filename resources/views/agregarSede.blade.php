@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar cuota</title>
+    <title>Agregar sede</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
@@ -54,27 +54,45 @@
         </div>
     </nav>
 
-    <div class="container">
-    <form method="POST" action="/cuota/add">
-                @csrf
-                <h2>Agregar cuota</h2>
-                <hr>
-                <div class="row">
+    <div class="container col-10">
+        <form method="POST" action="/sede/add">
+            @csrf
+            <h2>Agregar sede</h2>
+            <hr>
+            <div class="row">
 
-                    <div class="col">
-                        <input type="text" class="form-control" name="tipo" placeholder="Nombre cuota" required>
-                    </div>
-
-                    <div class="col">
-                        <input type="text" class="form-control" name="cantidad" placeholder="Monto" required>
-                    </div>
-
+                <div class="col">
+                    <input type="text" class="form-control" name="nombre_sede" placeholder="Nombre sede" required>
                 </div>
 
-                <div class="container">
-                    <button type="submit" class="mt-5 col-5 btn btn-success btn-block">Agregar</button> 
+                <div class="col">
+                    <input type="text" class="form-control" name="domicilio" placeholder="Domicilio" required>
                 </div>
-            </form>
+
+            </div>
+
+
+            <div class="row mt-3">
+
+                <div class="col">
+                    <input type="text" class="form-control" name="nombre_director" placeholder="Nombre director" required>
+                </div>
+
+                <div class="col">
+                    <input type="text" class="form-control" name="apellido1" placeholder="Primer apellido" required>
+                </div>
+
+                <div class="col">
+                    <input type="text" class="form-control" name="apellido2" placeholder="Segundo apellido" required>
+                </div>
+
+            </div>
+
+
+            <div class="container">
+                <button type="submit" class="mt-5 col-5 btn btn-success btn-block">Agregar</button> 
+            </div>
+        </form>
 
     </div>
 

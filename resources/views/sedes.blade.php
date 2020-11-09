@@ -30,12 +30,37 @@
             }
         </style>
 
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">ACNUR Systems</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="window.location='/socios'"  class="nav-link">Socios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
+                    </li>
+                    <li class="nav-item">
+                    <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
         <div id="head" class="row col-10">
             <div class="col-10">
                 <h2>Sedes ACNUR</h2>
             </div>
             <div id="addBtn" class="col-2">
-                <button class="btn btn-success"><i class="fas fa-user-plus"></i></button>
+                <button onclick="window.location='/agregarSede'" class="btn btn-success"><i class="fas fa-user-plus"></i></button>
             </div>
         </div>
 
@@ -44,7 +69,7 @@
                 <tr>
                     <th>ID sede</th>
                     <th>Nombre sede</th>
-                    <th>Ubicaciónn</th>
+                    <th>Ubicación</th>
                     <th>Nombre director</th>
                     <th>Apellido 1</th>
                     <th>Apellido 2</th>

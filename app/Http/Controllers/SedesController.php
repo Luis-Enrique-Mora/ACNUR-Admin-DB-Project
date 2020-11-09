@@ -32,7 +32,14 @@ class SedesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tipo = $request->get('nombre_sede');
+        $domicilio = $request->get('domicilio');
+        $nombre_director = $request->get('nombre_director');
+        $apellido1 = $request->get('apellido1');
+        $apellido2 = $request->get('apellido2');
+        $values = [$tipo, $domicilio, $nombre_director, $apellido1, $apellido2];
+        DB::insert("execute insertar_sede ?,?,?,?,?", $values);
+        return redirect('/sedes')->with('success', 'se agregó la sede');
     }
 
     /**

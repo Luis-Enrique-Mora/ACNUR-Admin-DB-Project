@@ -44,13 +44,13 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Socios</a>
+                    <a onclick="window.location='/socios'"  class="nav-link">Socios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sedes</a>
+                    <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Coutas</a>
+                <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
                 </li>
                 </ul>
             </div>
@@ -62,7 +62,7 @@
             <h2>Cuotas ACNUR</h2>
         </div>
         <div id="addBtn" class="col-2">
-            <button class="btn btn-success"><i class="fas fa-plus-square"></i></button>
+            <button onclick="window.location='/agregarCuota'" class="btn btn-success"><i class="fas fa-plus-square"></i></button>
         </div>
     </div>
     
