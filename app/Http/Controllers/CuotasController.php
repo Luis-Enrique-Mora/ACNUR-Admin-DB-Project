@@ -12,8 +12,7 @@ class CuotasController extends Controller
 
     public function index()
     {
-        $tipo_cuota = DB::select('select * from View_tipo_cuota_socio');
-        dump($tipo_cuota);
+        $tipo_cuota = DB::select('Execute SP_listar_cuotas');
         return View('cuotas')->with('tipo_cuota', $tipo_cuota);
     }
 
