@@ -28,6 +28,10 @@
             #addBtn{
                 margin-top: 50px;
             }
+
+            a:hover{
+                cursor: pointer;
+            }
         </style>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
