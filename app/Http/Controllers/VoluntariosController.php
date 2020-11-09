@@ -15,19 +15,14 @@ class VoluntariosController extends Controller
 
     public function store(Request $request)
     {
-        $volind = new voluntarios();
-        $volind->Nombre = $request->get('Nombre');
-        $volind->cedula = $request->get('cedula');
-        $volind->apellido1 = $request->get('Apellido1');
-        $volind->apellido2 = $request->get('Apellido2');
-        $volind->save();
-        return redirect('/voluntarios')->with('success', 'voluntariado has been successfully added');
+        $vol = DB::select('Execute SP_InsertarVoluntario');
+        return redirect('/voluntarios')->with('voluntarios', $vol);
     }
 
     public function index()
     {
-        $vol = voluntarios::all();
-        return view('voluntarios.index',compact('vol'));
+        $vol = DB::select('Execute SP_ListadoVoluntarios');
+        return View('voluntarios.index')->with('voluntarios', $vol);
     }
 
     public function edit($id)
@@ -39,17 +34,13 @@ class VoluntariosController extends Controller
     public function update(Request $request, $id)
     {
 
-        DB::table('voluntarios')
-        ->where('id', $id)
-        ->update(['Nombre' => $request->get('Nombre'),
-        'Apellido1' => $request->get('Apellido1'),
-        'Apellido2' => $request->get('Apellido2')]);
-        return redirect('/voluntarios/')->with('success', 'voluntariado has been successfully update');
+        $vol = DB::select('Execute SP_ActualizarVoluntarios');
+        return redirect('/voluntarios/')->with('voluntarios', $vol);
     }
 
     public function destroy($id)
     {
-        DB::table('voluntarios')->where('id', $id)->delete();
+        $vol = DB::select('Execute SP_EliminarVoluntarios');
         return redirect('/voluntarios/')->with('success','Registro eliminado exitosamente');
     }
 }
