@@ -62,13 +62,13 @@
                 <div class="row">
 
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Nombre">
+                        <input type="text" class="form-control" placeholder="Nombre" required>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Primer Apellido">
+                        <input type="text" class="form-control" placeholder="Primer Apellido" required>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Segundo Apellido">
+                        <input type="text" class="form-control" placeholder="Segundo Apellido" required>
                     </div>
                     <div class="col">
                         <select type="text" class="form-control" placeholder="Tipo cuota">
@@ -83,12 +83,12 @@
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1"></label>
-                    <textarea placeholder="Domicilo" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea placeholder="Domicilo" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <input type="number" class="form-control" placeholder="Número de cuenta">
+                        <input type="number" class="form-control" placeholder="Número de cuenta" required>
                     </div>
 
                     <div class="col">
@@ -96,7 +96,7 @@
                     </div>
 
                     <div class="col">
-                        <select type="text" class="form-control">
+                        <select type="text" class="form-control" required>
                             <option value="" disabled selected>Seleccione cuota</option>
                             @foreach($cuotas as $cuota)
                                 <option>{{ $cuota->cantidad }}</option>
@@ -106,7 +106,7 @@
                 </div>
 
                 <div class="container">
-                    <button class=" col-5 btn btn-success btn-block">Agregar</button> 
+                    <button class="mt-5 col-5 btn btn-success btn-block">Agregar</button> 
                 </div>
             </form>
 
