@@ -23,3 +23,6 @@ Route::get('/', function () {
 Route::get('/cuotas', [CuotasController::class, 'index']);
 Route::get('/sedes', [SedesController::class, 'index']);
 Route::get('/socios', [SociosController::class, 'index']);
+Route::get('/agregarSocio', function () {
+    return view('agregar_socio');
+});

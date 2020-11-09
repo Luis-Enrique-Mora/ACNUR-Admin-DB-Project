@@ -20,10 +20,23 @@
             .fas:hover{
                 cursor: pointer;
             }
+
+            #head{
+                margin: auto;
+            }
+
+            #addBtn{
+                margin-top: 50px;
+            }
         </style>
 
-        <div class="container">
-            <h2>Sedes ACNUR</h2>
+        <div id="head" class="row col-10">
+            <div class="col-10">
+                <h2>Sedes ACNUR</h2>
+            </div>
+            <div id="addBtn" class="col-2">
+                <button class="btn btn-success"><i class="fas fa-user-plus"></i></button>
+            </div>
         </div>
 
         <table class="table table-hover col-10" id="cuotas">

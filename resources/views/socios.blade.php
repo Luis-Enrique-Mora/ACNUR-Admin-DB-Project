@@ -20,12 +20,50 @@
             .fas:hover{
                 cursor: pointer;
             }
+
+            #head{
+                margin: auto;
+            }
+
+            #addBtn{
+                margin-top: 50px;
+            }
+
         </style>
 
-        <div class="container">
-            <h2>Socios ACNUR</h2>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">ACNUR Systems</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Socios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sedes</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Coutas</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
+        <div id="head" class="row col-10">
+            <div class="col-10">
+                <h2>Socios ACNUR</h2>
+            </div>
+            <div id="addBtn" class="col-2">
+                <button class="btn btn-success"><i class="fas fa-user-plus"></i></button>
+            </div>
+        </div>
         <table class="table table-hover col-10" id="cuotas">
             <thead>
                 <tr>
