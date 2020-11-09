@@ -41,19 +41,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Socios</a>
+                    <a class="nav-link" href="{{ url('socios') }}">Socios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sedes</a>
+                    <a class="nav-link" href="{{ url('sedes') }}">Sedes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Voluntarios</a>
+                    <a class="nav-link" href="{{ url('voluntarios') }}">Voluntarios</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Coutas</a>
+                <a class="nav-link" href="{{ url('cuotas') }}">Coutas</a>
                 </li>
                 </ul>
             </div>
@@ -86,8 +86,16 @@
                 <td>{{ $vol->nombre }}</td>
                 <td>{{ $vol->apellido1 }}</td>
                 <td>{{ $vol->apellido2 }}</td>
-                <td><i class="fas fa-trash"></i></td>
-            <td><i class="fas fa-edit"></i></td> 
+                
+                <td><a href="{{action('VoluntariosController@edit', $vol->id)}}" class="btn btn-warning">Edit</a></td>
+                <td>
+                <form action="{{action('VoluntariosController@destroy', $vol->id)}}" method="post">
+                @csrf
+                <input name="_method" type="hidden" value="DELETE">
+                <button class="btn btn-danger" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit">Delete</button>
+                </form>
+                </td>
+            
             </tr>
             @endforeach
         </tbody>
