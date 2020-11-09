@@ -7,79 +7,48 @@ use Illuminate\Http\Request;
 
 class VoluntariosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
-    {
-        //
+    { 
+        return view('voluntarios.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $volind = new voluntarios();
+        $volind->Nombre = $request->get('Nombre');
+        $volind->cedula = $request->get('cedula');
+        $volind->apellido1 = $request->get('Apellido1');
+        $volind->apellido2 = $request->get('Apellido2');
+        $volind->save();
+        return redirect('/voluntarios')->with('success', 'voluntariado has been successfully added');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\voluntarios  $voluntarios
-     * @return \Illuminate\Http\Response
-     */
-    public function show(voluntarios $voluntarios)
+    public function index()
     {
-        //
+        $vol = voluntarios::all();
+        return view('voluntarios.index',compact('vol'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\voluntarios  $voluntarios
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(voluntarios $voluntarios)
+    public function edit($id)
     {
-        //
+        $vol = voluntarios::find($id);
+        return view('voluntarios.edit',compact('vol','id'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\voluntarios  $voluntarios
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, voluntarios $voluntarios)
+    public function update(Request $request, $id)
     {
-        //
+
+        DB::table('voluntarios')
+        ->where('id', $id)
+        ->update(['Nombre' => $request->get('Nombre'),
+        'Apellido1' => $request->get('Apellido1'),
+        'Apellido2' => $request->get('Apellido2')]);
+        return redirect('/voluntarios/')->with('success', 'voluntariado has been successfully update');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\voluntarios  $voluntarios
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(voluntarios $voluntarios)
+    public function destroy($id)
     {
-        //
+        DB::table('voluntarios')->where('id', $id)->delete();
+        return redirect('/voluntarios/')->with('success','Registro eliminado exitosamente');
     }
 }

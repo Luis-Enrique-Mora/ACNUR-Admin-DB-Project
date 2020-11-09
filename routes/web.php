@@ -3,6 +3,7 @@
 use App\Http\Controllers\CuotasController;
 use App\Http\Controllers\SedesController;
 use App\Http\Controllers\SociosController;
+use App\Http\Controllers\VoluntariosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,10 @@ Route::get('/cuotas', [CuotasController::class, 'index']);
 Route::get('/sedes', [SedesController::class, 'index']);
 Route::get('/socios', [SociosController::class, 'index']);
 Route::get('/agregarSocio', [SociosController::class, 'createView']);
+
+Route::get('voluntarios/add', [VoluntariosController::class, 'create']); 
+Route::post('voluntarios/add', [VoluntariosController::class, 'store']); 
+Route::get('/voluntarios', [VoluntariosController::class, 'index']); 
+Route::get('voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
+Route::post('voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
+Route::delete('voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
