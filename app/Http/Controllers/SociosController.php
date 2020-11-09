@@ -23,9 +23,11 @@ class SociosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createView()
     {
-        //
+        $sedes = DB::select('select * from View_sede_socio');
+        $cuotas = DB::select('select * from View_tipo_cuota_socio');
+        return View('agregar_socio')->with('sedes', $sedes)->with('cuotas', $cuotas);
     }
 
     /**

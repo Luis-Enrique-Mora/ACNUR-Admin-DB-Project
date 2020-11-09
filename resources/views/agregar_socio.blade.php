@@ -23,8 +23,9 @@
                 margin: auto;
             }
 
-            #addBtn{
+            button{
                 margin-top: 50px;
+                margin: auto;
             }
 
         </style>
@@ -56,48 +57,57 @@
 
             <form>
 
-            <h2>Agregar socio</h2>
-            <hr>
-            <div class="row">
+                <h2>Agregar socio</h2>
+                <hr>
+                <div class="row">
 
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Nombre">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Primer Apellido">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Segundo Apellido">
-                </div>
-                <div class="col">
-                    <select type="text" class="form-control" placeholder="Tipo cuota">
-                        <option value="" disabled selected>Seleccione sede</option>
-                    </select>
-                </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Nombre">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Primer Apellido">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Segundo Apellido">
+                    </div>
+                    <div class="col">
+                        <select type="text" class="form-control" placeholder="Tipo cuota">
+                            <option value="" disabled selected>Seleccione sede</option>
+                            @foreach($sedes as $sede)
+                                <option>{{ $sede->nombre_sede }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1"></label>
-                <textarea placeholder="Domicilo" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <input type="number" class="form-control" placeholder="Número de cuenta">
                 </div>
 
-                <div class="col">
-                    <input type='text' class="form-control" id="datepicker" > <br>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1"></label>
+                    <textarea placeholder="Domicilo" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
 
-                <div class="col">
-                    <select type="text" class="form-control" placeholder="Tipo cuota">
-                        <option value="" disabled selected>Seleccione cuota</option>
-                    </select>
-                </div>
-            </div>
+                <div class="row">
+                    <div class="col">
+                        <input type="number" class="form-control" placeholder="Número de cuenta">
+                    </div>
 
+                    <div class="col">
+                        <input id="Fecha" type="date" class="form-control datepicker" data-date-format="mm/dd/yyyy" name="Fecha" required> 
+                    </div>
+
+                    <div class="col">
+                        <select type="text" class="form-control">
+                            <option value="" disabled selected>Seleccione cuota</option>
+                            @foreach($cuotas as $cuota)
+                                <option>{{ $cuota->cantidad }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <button class=" col-5 btn btn-success btn-block">Agregar</button> 
+                </div>
             </form>
 
         </div>
