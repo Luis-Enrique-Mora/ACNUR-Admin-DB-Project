@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\voluntarios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VoluntariosController extends Controller
 {
