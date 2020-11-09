@@ -37,8 +37,9 @@ class SociosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   dump($request->get("fecha_pago"));
+        DB::select(DB::select("execute insertar_socio ?,?,?,?,?,?,?,?"), array($request->get("nombre"), $request->get("apellido1"), $request->get("apellido2"), $request->get("direccion"), $request->get("fecha_pago"), $request->get("cuanta_bancaria"), $request->get("tipo_cuota_fk"), $request->get("sede_fk")));
+        return redirect('/socios')->with('success', 'se agregó el socio');
     }
 
     /**

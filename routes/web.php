@@ -25,6 +25,7 @@ Route::get('/cuotas', [CuotasController::class, 'index']);
 Route::get('/sedes', [SedesController::class, 'index']);
 Route::get('/socios', [SociosController::class, 'index']);
 Route::get('/agregarSocio', [SociosController::class, 'createView']);
+Route::post('/agregarSocio/add', [SociosController::class, 'store']);
 
 Route::get('voluntarios/add', [VoluntariosController::class, 'create']); 
 Route::post('voluntarios/add', [VoluntariosController::class, 'store']); 

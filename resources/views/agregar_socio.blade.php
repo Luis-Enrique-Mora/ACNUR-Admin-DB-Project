@@ -6,7 +6,6 @@
         <title>Agregar socio</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link href='bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' rel='stylesheet' type='text/css'>
     </head>
     <body>
 
@@ -55,26 +54,29 @@
     </nav>
         <div class="container col-10">
 
-            <form>
-
+            <form method="POST" action="agregarSocio/add">
+                @csrf
                 <h2>Agregar socio</h2>
                 <hr>
                 <div class="row">
 
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Nombre" required>
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
                     </div>
+
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Primer Apellido" required>
+                        <input type="text" class="form-control" name="apellido1" placeholder="Primer Apellido" required>
                     </div>
+
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Segundo Apellido" required>
+                        <input type="text" class="form-control" name="apellido2" placeholder="Segundo Apellido" required>
                     </div>
+
                     <div class="col">
-                        <select type="text" class="form-control" placeholder="Tipo cuota">
+                        <select type="text" name="sede_fk" class="form-control" placeholder="Tipo cuota">
                             <option value="" disabled selected>Seleccione sede</option>
                             @foreach($sedes as $sede)
-                                <option>{{ $sede->nombre_sede }}</option>
+                                <option value="{{$sede->sede_id}}">{{ $sede->nombre_sede }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -83,30 +85,30 @@
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1"></label>
-                    <textarea placeholder="Domicilo" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                    <textarea placeholder="Domicilo" name="direccion" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
                 </div>
 
-                <div class="row">
+                <div class="from-group row">
                     <div class="col">
-                        <input type="number" class="form-control" placeholder="Número de cuenta" required>
+                        <input type="number" name="cuanta_bancaria" class="form-control" placeholder="Número de cuenta" required>
                     </div>
 
                     <div class="col">
-                        <input id="Fecha" type="date" class="form-control datepicker" data-date-format="mm/dd/yyyy" name="Fecha" required> 
+                        <input id="Fecha" type="date" class="form-control datepicker" data-date-format="mm/dd/yyyy" name="fecha_pago" required> 
                     </div>
 
                     <div class="col">
-                        <select type="text" class="form-control" required>
+                        <select type="text" name="tipo_cuota_fk" class="form-control" required>
                             <option value="" disabled selected>Seleccione cuota</option>
                             @foreach($cuotas as $cuota)
-                                <option>{{ $cuota->cantidad }}</option>
+                                <option value="{{$cuota->cuota_id}}">{{ $cuota->cantidad }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
 
                 <div class="container">
-                    <button class="mt-5 col-5 btn btn-success btn-block">Agregar</button> 
+                    <button type="submit" class="mt-5 col-5 btn btn-success btn-block">Agregar</button> 
                 </div>
             </form>
 
@@ -114,13 +116,6 @@
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-        
-        <!-- Script -->
-    <script type="text/javascript">
-        $(document).ready(function(){
-        $('#datepicker').datepicker(); 
-        });
-    </script>
 
     </body>
 </html>
