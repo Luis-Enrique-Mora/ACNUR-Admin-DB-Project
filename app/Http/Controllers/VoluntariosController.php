@@ -14,12 +14,12 @@ class VoluntariosController extends Controller
 
     public function store(Request $request)
     {
-        $volind = new voluntarios();
-        $volind->Nombre = $request->get('Nombre');
-        $volind->cedula = $request->get('cedula');
-        $volind->apellido1 = $request->get('Apellido1');
-        $volind->apellido2 = $request->get('Apellido2');
-        $volind->save();
+        $vol = new voluntarios();
+        $vol->Nombre = $request->get('Nombre');
+        $vol->cedula = $request->get('cedula');
+        $vol->apellido1 = $request->get('Apellido1');
+        $vol->apellido2 = $request->get('Apellido2');
+        $vol->save();
         return redirect('/voluntarios')->with('success', 'voluntariado has been successfully added');
     }
 
