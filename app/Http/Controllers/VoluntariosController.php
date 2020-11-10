@@ -40,16 +40,17 @@ class VoluntariosController extends Controller
         return View('editarVoluntario', compact('sedes','voluntarios'));
     }
 
-    public function update(Request $request, voluntarios $voluntarios)
+    public function update(Request $request)
     {
-        
+        $id= $request->get("id");
+        $cedula= $request->get("cedula");
         $nombre= $request->get("nombre");
         $apellido1 = $request->get("apellido1");
         $apellido2 = $request->get("apellido2");
         $sede_fk = $request->get("sede_fk");
-        $values = [$nombre, $apellido1, $apellido2, $sede_fk];
+        $values = [$id, $cedula, $nombre, $apellido1, $apellido2, $sede_fk];
 
-        DB::insert("Execute SP_ActualizarVoluntarios ?,?,?,?", $values);
+        DB::insert("Execute SP_ActualizarVoluntarios ?,?,?,?,?,?", $values);
         return redirect('/voluntarios')->with('success', 'se actualizó el voluntario'); 
     }
 

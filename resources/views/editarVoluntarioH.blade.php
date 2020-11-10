@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Agregar Voluntarios</title>
+        <title>Actualizar Voluntarios</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     </head>
@@ -29,7 +29,7 @@
         }
 
     </style>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
         <a class="navbar-brand text-white" id="Inicio">
     <img src="logo.jpeg"  height="85px">
@@ -79,10 +79,10 @@
         <div class="container col-10">
 
         @foreach($voluntariosH as $vol)
-            <form method="POST" action="{{url('voluntarioH/update/' .$vol->voluntarioH_id)}}">
+            <form method="POST" action="/voluntarioH/update/">
             @endforeach
                 @csrf
-                <h2>Agregar Voluntario</h2>
+                <h2>Actualizar Voluntario</h2>
                 <hr>
                 <div class="row">
                 @foreach($voluntariosH as $vol)
@@ -99,8 +99,14 @@
                         <input type="text" class="form-control" name="cantidad_de_trabajos" value="{{$vol->cantidad_de_trabajos}}" placeholder="Cantidad de trabajos " >
                     </div>
                     @endforeach
-                    
-
+                    <div class="col">
+                        <select type="text" name="voluntario_fk" class="form-control" placeholder="Voluntario">
+                            <option value="" disabled selected>Seleccione voluntario</option>
+                            @foreach($voluntarios ?? '' as $voluntario)
+                                <option value="{{$voluntario->voluntario_id}}">{{ $voluntario->voluntario_id }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                

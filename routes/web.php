@@ -67,7 +67,7 @@ Route::get('/agregarVoluntario', [VoluntariosController::class, 'createView']);
 Route::get('/voluntarios', [VoluntariosController::class, 'index']);
 Route::post('/agregarVoluntario/add', [VoluntariosController::class, 'store']); 
 Route::get('/voluntario/edit/{id}', [VoluntariosController::class, 'edit']); 
-Route::post('voluntario/update/{id}', [VoluntariosController::class, 'update']); 
+Route::post('/voluntario/update/', [VoluntariosController::class, 'update']); 
 Route::delete('voluntario/delete/{id}', [VoluntariosController::class, 'destroy']); 
 
 /*
@@ -95,7 +95,7 @@ Route::get('/agregarVoluntarioH', [VoluntariosHController::class, 'createView'])
 Route::get('/voluntariosH', [VoluntariosHController::class, 'index']);
 Route::post('/agregarVoluntarioH/add', [VoluntariosHController::class, 'store']); 
 Route::get('/voluntarioH/edit/{id}', [VoluntariosHController::class, 'edit']); 
-Route::post('voluntarioH/update/{id}', [VoluntariosHController::class, 'update']); 
+Route::post('/voluntarioH/update/', [VoluntariosHController::class, 'update']); 
 Route::delete('voluntarioH/delete/{id}', [VoluntariosHController::class, 'destroy']); 
 
 

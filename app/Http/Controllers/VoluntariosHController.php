@@ -36,8 +36,8 @@ class VoluntariosHController extends Controller
 
     public function edit($id)
     {
-        $voluntariosH = DB::select('execute BuscarVoluntariosID_H ?', array($id));
-        return View('editarVoluntarioH')->with('voluntariosH', $voluntariosH);
+        $voluntarios = DB::select('execute SP_BuscarVoluntariosID ?', array($id));
+        return View('editarVoluntarioH')->with('voluntariosH', $voluntarios);
     }
 
     public function update(Request $request)
@@ -46,11 +46,11 @@ class VoluntariosHController extends Controller
         $profesion= $request->get("profesion");
         $disponibilidad= $request->get("disponibilidad");
         $cantidad_de_trabajos = $request->get("cantidad_de_trabajos");
-        
-        $values = [$profesion, $disponibilidad, $cantidad_de_trabajos];
+        $voluntario_fk = $request->get("voluntario_fk");
+        $values = [$id, $profesion, $disponibilidad, $cantidad_de_trabajos,$voluntario_fk];
 
-        DB::insert("Execute SP_ActualizarVoluntarios ?,?,?", $values);
-        return redirect('/voluntarios')->with('success', 'se actualizó el socio'); 
+        DB::insert("Execute ActualizarVoluntarios_H ?,?,?,?,?", $values);
+        return redirect('/voluntariosH')->with('success', 'se actualizó el voluntario'); 
     }
 
     public function destroy($id)
