@@ -33,14 +33,22 @@ Route::post('/sede/add', [SedesController::class, 'store']);
 Route::get('/agregarCuota', function () {
     return view('agregarCuota');
 });
+Route::delete('socio/delete/{id}', [SociosController::class, 'destroy']);
+Route::delete('cuota/delete/{id}', [CuotasController::class, 'destroy']);
+Route::delete('sede/delete/{id}', [SedesController::class, 'destroy']);
+Route::get('/socio/edit/{id}', [SociosController::class, 'edit']);
+Route::post('socio/update/{id}', [SociosController::class, 'update']);
 
 Route::get('/agregarSede', function () {
     return view('agregarSede');
 });
 
-Route::get('voluntarios/add', [VoluntariosController::class, 'create']); 
-Route::post('voluntarios/add', [VoluntariosController::class, 'store']); 
+Route::get('/agregarVoluntario', function () {
+    return view('agregarVoluntario');
+});
+Route::post('/voluntarios/add', [VoluntariosController::class, 'store']); 
 Route::get('/voluntarios', [VoluntariosController::class, 'index']); 
+<<<<<<< HEAD
 Route::get('voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
 Route::post('voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
 Route::delete('voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
@@ -58,3 +66,8 @@ Route::post('/agregar/productos', [EnviosController::class, 'agregarProducto']);
 Route::get('/editar/producto/{id}', [EnviosController::class, 'editarProducto']); 
 Route::get('/editar/producto', [EnviosController::class, 'actualizarProducto']); 
 Route::get('/eliminar/producto/{id}', [EnviosController::class, 'eliminarProducto']); 
+=======
+Route::get('/voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
+Route::post('/voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
+Route::delete('/voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
+>>>>>>> ceceaa5b2683b7e086860b813cfc5394971150b1

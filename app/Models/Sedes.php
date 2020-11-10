@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $apellido1
  * @property int $apellido2
  * @property Collection|Socios[] $socios
+ * @property Collection|voluntarios[] $voluntarios
  *
  * @package App\Models
  */
@@ -32,5 +33,10 @@ class Sedes extends Model
     public function socios()
     {
         return $this->hasMany(Socios::class, 'sede_fk');
+    }
+
+    public function voluntarios()
+    {
+        return $this->hasMany(voluntarios::class, 'sede_fk');
     }
 }

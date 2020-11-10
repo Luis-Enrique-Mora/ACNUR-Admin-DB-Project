@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Socios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -68,9 +69,12 @@ class SociosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($socio_id)
     {
-
+       $socio = DB::select('execute socio_por_id ?', array($socio_id));
+       $sedes = DB::select('select * from View_sede_socio');
+       $cuotas = DB::select('select * from View_tipo_cuota_socio');
+       return View('editarSocio', compact('sedes','cuotas','socio'));
     }
 
     /**
@@ -82,7 +86,18 @@ class SociosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nombre= $request->get("nombre");
+        $apellido1 = $request->get("apellido1");
+        $apellido2 = $request->get("apellido2");
+        $direccion = $request->get("direccion");
+        $fecha_pago = $request->get("fecha_pago");
+        $cuenta_bancaria = $request->get("cuanta_bancaria");
+        $tipo_cuota_fk = $request->get("tipo_cuota_fk");
+        $sede_fk = $request->get("sede_fk");
+        $values = [$id, $nombre, $apellido1, $apellido2, $direccion, $fecha_pago, $cuenta_bancaria, $tipo_cuota_fk, $sede_fk];
+        
+        DB::update("execute actualizar_socio ?,?,?,?,?,?,?,?,?", $values);
+        return redirect('/socios')->with('success', 'se actualizó el socio');
     }
 
     /**
@@ -93,6 +108,7 @@ class SociosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete("execute borrar_socio ?", array($id));
+        return redirect('/socios')->with('success', 'se eliminó el socio');
     }
 }

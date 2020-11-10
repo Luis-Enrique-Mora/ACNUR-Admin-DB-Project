@@ -76,8 +76,9 @@ class CuotasController extends Controller
      * @param  \App\Models\Tipo_cuotas  $tipo_cuotas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tipo_cuotas $tipo_cuotas)
+    public function destroy($id)
     {
-        //
+        DB::delete("execute eliminar_cuota ?", array($id));
+        return redirect('/cuotas')->with('success', 'se eliminó la cuota');
     }
 }

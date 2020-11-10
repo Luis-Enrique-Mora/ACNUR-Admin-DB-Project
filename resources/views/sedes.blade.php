@@ -64,7 +64,7 @@
                 <h2>Sedes ACNUR</h2>
             </div>
             <div id="addBtn" class="col-2">
-                <button onclick="window.location='/agregarSede'" class="btn btn-success"><i class="fas fa-user-plus"></i></button>
+                <button onclick="window.location='/agregarSede'" class="btn btn-success"><i class="fas fa-plus-square"></i></button>
             </div>
         </div>
 
@@ -89,8 +89,14 @@
                     <td>{{ $sede->nombre_director }}</td>
                     <td>{{ $sede->apellido1 }}</td>
                     <td>{{ $sede->apellido2 }}</td>
-                    <td><i class="fas fa-trash"></i></td>
-                <td><i class="fas fa-edit"></i></td> 
+                    <td>
+                        <form action="{{url('sede/delete/' .$sede->sede_id)}}" method="post">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
+                        </form>
+                    </td>
+                    <td><i class="fas fa-edit"></i></td> 
                 </tr>
                 @endforeach
             </tbody>
