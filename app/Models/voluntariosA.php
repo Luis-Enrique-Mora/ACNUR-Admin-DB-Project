@@ -18,7 +18,7 @@ class voluntariosA extends Model
 {
     protected $table = 'voluntarios_Administrativos';
     protected $cast = [
-        'sede_fk' => 'int'
+        'voluntario_fk' => 'int'
     ];
 
     protected $fillable = [

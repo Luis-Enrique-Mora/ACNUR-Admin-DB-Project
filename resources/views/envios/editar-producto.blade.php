@@ -11,14 +11,15 @@
                     @csrf
 
                    
-                    <select class="custom-select col-3" name="idTipoEnv" id="inputGroupSelect01">
-                        @foreach ($producto as $resp)
-                            <option  >{{$resp->descripcion}}</option>
+                    <select class="custom-select col-4" name="idTipoEnv" id="inputGroupSelect01">
+                        @foreach ($tipo_envio as $resp)
+                            <option name="idTipoEnv" value="{{$resp->idTipoEnv}}">{{$resp->descripcion}}</option>
                         @endforeach 
                     </select>
                     
                     <div class="form-group">
                         @foreach ($producto as $pro)
+                        <input hidden name="idProducto" value="{{$pro->idProducto}}">
                         <label>Descripción</label>
                         <input type="text" name="descripcion" value="{{$pro->descripcion}}" class="form-control col-4" required>
                         @endforeach 

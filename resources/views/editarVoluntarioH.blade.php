@@ -58,32 +58,27 @@
     </nav>
         <div class="container col-10">
 
-            <form method="POST" action="agregarVoluntarioH/add">
+        @foreach($voluntariosH as $vol)
+            <form method="POST" action="{{url('voluntarioH/update/' .$vol->voluntarioH_id)}}">
+            @endforeach
                 @csrf
                 <h2>Agregar Voluntario</h2>
                 <hr>
                 <div class="row">
-
+                @foreach($voluntariosH as $vol)
                     <div class="col">
-                        <input type="text" class="form-control" name="profesion" placeholder="Profesion" >
+                        <input type="text" class="form-control" name="profesion" value="{{$vol->profesion}}" placeholder="Profesion" >
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="disponibilidad" placeholder="Disponibilidad" >
+                        <input type="text" class="form-control" name="disponibilidad" value="{{$vol->disponibilidad}}" placeholder="Disponibilidad" >
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="cantidad_de_trabajos" placeholder="Cantidad de trabajos " >
+                        <input type="text" class="form-control" name="cantidad_de_trabajos" value="{{$vol->cantidad_de_trabajos}}" placeholder="Cantidad de trabajos " >
                     </div>
-
-                    <div class="col">
-                        <select type="text" name="voluntario_fk" class="form-control" placeholder="Voluntario">
-                            <option value="" disabled selected>Seleccione voluntario</option>
-                            @foreach($voluntarios ?? '' as $voluntario)
-                                <option value="{{$voluntario->voluntario_id}}">{{ $voluntario->voluntario_id }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    @endforeach
+                    
 
                 </div>
 
@@ -92,7 +87,7 @@
                 
 
                 <div class="container">
-                    <button type="submit" class="mt-5 col-5 btn btn-success btn-block">Agregar</button> 
+                    <button type="submit" class="mt-5 col-5 btn btn-success btn-block">Actualizar</button> 
                 </div>
             </form>
 
