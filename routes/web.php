@@ -44,16 +44,18 @@ Route::get('/agregarSede', function () {
     return view('agregarSede');
 });
 
-Route::get('/agregarVoluntario', function () {
-    return view('agregarVoluntario');
-});
-Route::post('/voluntarios/add', [VoluntariosController::class, 'store']); 
-Route::get('/voluntarios', [VoluntariosController::class, 'index']); 
-<<<<<<< HEAD
-Route::get('voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
-Route::post('voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
-Route::delete('voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
 
+Route::get('/voluntarios', [VoluntariosController::class, 'index']);
+Route::post('/agregarVoluntario/add', [VoluntariosController::class, 'store']); 
+Route::get('/voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
+Route::post('voluntario/update/{id}', [VoluntariosController::class, 'update']); 
+Route::delete('voluntario/delete/{id}', [VoluntariosController::class, 'destroy']); 
+
+
+
+/*
+
+<<<<<<< HEAD
 Route::get('/tipo/envios', [EnviosController::class, 'tipoEnvio']); 
 Route::get('/crear/tipo/envios/', [EnviosController::class, 'createTipoEnv']); 
 Route::post('/crear/tipo/envio', [EnviosController::class, 'crearTipoEnvio']); 
@@ -68,18 +70,13 @@ Route::get('/editar/producto/{id}', [EnviosController::class, 'editarProducto'])
 Route::get('/editar/producto', [EnviosController::class, 'actualizarProducto']); 
 Route::get('/eliminar/producto/{id}', [EnviosController::class, 'eliminarProducto']); 
 =======
-Route::get('/voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
-Route::post('/voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
-<<<<<<< HEAD
-Route::delete('voluntario/delete/{id}', [VoluntariosController::class, 'destroy']); 
 
-Route::get('/tipoVoluntarios', [TipoVoluntarioController::class, 'index']);
-Route::post('/tipoVoluntario/add', [TipoVoluntarioController::class, 'store']);
-Route::delete('tipovoluntario/delete/{id}', [TipoVoluntarioController::class, 'destroy']);
-Route::get('/agregarTipoVoluntario', function () {
-    return view('agregarTipoVoluntario');
-});
+<<<<<<< HEAD
+
+
+
 =======
-Route::delete('/voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
+
 >>>>>>> ceceaa5b2683b7e086860b813cfc5394971150b1
 >>>>>>> 92f0ed2b47b961af1c1993372a3680ea6388607e
+*/

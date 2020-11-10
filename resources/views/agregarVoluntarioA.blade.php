@@ -81,6 +81,27 @@
                     </div>
 
                     <div class="col">
+                        <select type="text" name="tipovol_fk" class="form-control" required>
+                            <option value="" disabled selected>Seleccione Tipo</option>
+                            @foreach($tipo_voluntario as $tipovol)
+                                <option value="{{$tipovol->tipovol_id}}">{{ $tipovol->tipo }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col">
+                        <input type="text" class="form-control" name="profesion" placeholder="Profesion" >
+                    </div>
+
+                    <div class="col">
+                        <input type="text" class="form-control" name="disponibilidad" placeholder="Disponibilidad" >
+                    </div>
+
+                    <div class="col">
+                        <input type="text" class="form-control" name="cantidad_de_trabajos " placeholder="Cantidad de trabajos " >
+                    </div>
+
+                    <div class="col">
                         <select type="text" name="sede_fk" class="form-control" placeholder="Sede">
                             <option value="" disabled selected>Seleccione sede</option>
                             @foreach($sedes ?? '' as $sede)
