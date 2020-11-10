@@ -30,6 +30,9 @@
             margin-top: 50px;
         }
 
+        a:hover{
+                cursor: pointer;
+            }
     </style>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -82,8 +85,14 @@
                 <td>{{ $cuota->cuota_id }}</td>
                 <td>{{ $cuota->tipo }}</td>
                 <td>{{ $cuota->cantidad }}</td>
-                <td><i class="fas fa-trash"></i></td>
-            <td><i class="fas fa-edit"></i></td> 
+                <td>
+                    <form action="{{url('cuota/delete/' .$cuota->cuota_id)}}" method="post">
+                        @csrf
+                        <input name="_method" type="hidden" value="DELETE">
+                        <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
+                    </form>
+                </td>
+                <td><i class="fas fa-edit"></i></td> 
             </tr>
             @endforeach
         </tbody>
