@@ -36,6 +36,7 @@ Route::get('/agregarCuota', function () {
     return view('agregarCuota');
 });
 Route::get('/socioPorCuota', [SociosController::class, 'reposteSociosPorCuotas']);
+Route::get('/sedesMayorIngreso', [SedesController::class, 'sedesMayorIngreso']);
 
 Route::delete('socio/delete/{id}', [SociosController::class, 'destroy']);
 Route::delete('cuota/delete/{id}', [CuotasController::class, 'destroy']);

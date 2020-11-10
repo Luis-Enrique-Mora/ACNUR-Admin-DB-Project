@@ -60,48 +60,23 @@
         </nav>
 
         <div id="head" class="row col-10">
-            <div class="col-4">
-                <h2>Sedes ACNUR</h2>
-            </div>
-
-            <div id="addBtn" class="col-4">
-                <button onclick="window.location='/sedesMayorIngreso'" class="btn btn-success">Cantidad de socios por cuotas</button>
-            </div>
-
-            <div id="addBtn" class="col-2">
-                <button onclick="window.location='/agregarSede'" class="btn btn-success"><i class="fas fa-plus-square"></i></button>
+            <div class="col-10">
+                <h2>Reportes de sedes con mayor ingreso</h2>
             </div>
         </div>
 
         <table class="table table-hover col-10" id="cuotas">
             <thead>
                 <tr>
-                    <th>ID sede</th>
-                    <th>Nombre sede</th>
-                    <th>Ubicación</th>
-                    <th>Nombre director</th>
-                    <th>Apellido 1</th>
-                    <th>Apellido 2</th>
-                    <th></th>
+                    <th>Sede</th>
+                    <th>Monto</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($sedes as $sede)
+                @foreach($reportes as $reporte)
                 <tr>
-                    <td>{{ $sede->sede_id }}</td>
-                    <td>{{ $sede->nombre_sede }}</td>
-                    <td>{{ $sede->domicilio }}</td>
-                    <td>{{ $sede->nombre_director }}</td>
-                    <td>{{ $sede->apellido1 }}</td>
-                    <td>{{ $sede->apellido2 }}</td>
-                    <td>
-                        <form action="{{url('sede/delete/' .$sede->sede_id)}}" method="post">
-                            @csrf
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
-                        </form>
-                    </td>
-                    <td><i class="fas fa-edit"></i></td> 
+                    <td>{{ $reporte->nombre_sede }}</td>
+                    <td>{{ $reporte->Monto }}</td>
                 </tr>
                 @endforeach
             </tbody>
