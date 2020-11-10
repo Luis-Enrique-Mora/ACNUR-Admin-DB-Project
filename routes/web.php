@@ -36,9 +36,11 @@ Route::get('/agregarSede', function () {
     return view('agregarSede');
 });
 
-Route::get('voluntarios/add', [VoluntariosController::class, 'create']); 
-Route::post('voluntarios/add', [VoluntariosController::class, 'store']); 
+Route::get('/agregarVoluntario', function () {
+    return view('agregarVoluntario');
+});
+Route::post('/voluntarios/add', [VoluntariosController::class, 'store']); 
 Route::get('/voluntarios', [VoluntariosController::class, 'index']); 
-Route::get('voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
-Route::post('voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
-Route::delete('voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
+Route::get('/voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
+Route::post('/voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
+Route::delete('/voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
