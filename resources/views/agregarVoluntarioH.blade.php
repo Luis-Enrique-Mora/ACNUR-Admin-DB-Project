@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Agregar socio</title>
+        <title>Agregar Voluntarios</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     </head>
@@ -28,10 +28,6 @@
             margin: auto;
         }
 
-        a:hover{
-                cursor: pointer;
-            }
-
     </style>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -53,76 +49,50 @@
                 <li class="nav-item">
                 <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
                 </li>
+                <li class="nav-item">
+                <a onclick="window.location='/voluntarios'" class="nav-link">Voluntarios</a>
+                </li>
                 </ul>
             </div>
         </div>
     </nav>
         <div class="container col-10">
-             @foreach($socio as $socios)
-            <form method="POST" action="{{url('socio/update/' .$socios->socio_id)}}">
-            @endforeach
+
+            <form method="POST" action="agregarVoluntarioH/add">
                 @csrf
-                <h2>Agregar socio</h2>
+                <h2>Agregar Voluntario</h2>
                 <hr>
                 <div class="row">
-                @foreach($socio as $socios)
+
                     <div class="col">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{$socios->nombre}}" required>
+                        <input type="text" class="form-control" name="profesion" placeholder="Profesion" >
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="apellido1" placeholder="Primer Apellido" value="{{$socios->apellido1}}" required>
+                        <input type="text" class="form-control" name="disponibilidad" placeholder="Disponibilidad" >
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="apellido2" placeholder="Segundo Apellido" value="{{$socios->apellido2}}" required>
+                        <input type="text" class="form-control" name="cantidad_de_trabajos" placeholder="Cantidad de trabajos " >
                     </div>
-                @endforeach
+
                     <div class="col">
-                        <select type="text" name="sede_fk" class="form-control" placeholder="Tipo cuota">
-                            @foreach($socio as $socios)
-                                <option value="{{$socios->sede_id}}" disabled selected>{{$socios->nombre_sede}}</option>
-                            @endforeach
-                            @foreach($sedes as $sede)
-                                <option value="{{$sede->sede_id}}">{{ $sede->nombre_sede }}</option>
+                        <select type="text" name="voluntario_fk" class="form-control" placeholder="Voluntario">
+                            <option value="" disabled selected>Seleccione voluntario</option>
+                            @foreach($voluntarios ?? '' as $voluntario)
+                                <option value="{{$voluntario->voluntario_id}}">{{ $voluntario->voluntario_id }}</option>
                             @endforeach
                         </select>
                     </div>
 
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1"></label>
-                    @foreach($socio as $socios)
-                        <textarea placeholder="Domicilo" name="direccion" class="form-control" id="exampleFormControlTextarea1" rows="3" required>{{$socios->direccion}}</textarea>
-                    @endforeach
-                </div>
+               
 
-                <div class="from-group row">
-                    
-                    <div class="col">
-                     @foreach($socio as $socios)
-                        <input type="text" name="cuanta_bancaria" class="form-control" placeholder="Número de cuenta" value="{{$socios->cuanta_bancaria}}" required>
-                     @endforeach
-                    </div>
-
-                    <div class="col">
-                        @foreach($socio as $socios)
-                            <input id="Fecha" type="date" class="form-control datepicker" value="{{$socios->fecha_pago}}" data-date-format="mm/dd/yyyy" name="fecha_pago" required>
-                        @endforeach
-                    </div>
-                     
-                    <div class="col">
-                        <select type="text" name="tipo_cuota_fk" class="form-control" required>
-                            @foreach($cuotas as $cuota)
-                                <option value="{{$cuota->cuota_id}}">{{ $cuota->cantidad }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+                
 
                 <div class="container">
-                    <button type="submit" class="mt-5 col-5 btn btn-success btn-block">Actualizar</button> 
+                    <button type="submit" class="mt-5 col-5 btn btn-success btn-block">Agregar</button> 
                 </div>
             </form>
 

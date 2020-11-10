@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voluntarios</title>
+    <title>Voluntarios Humanitarios</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/css/app.css">
@@ -79,42 +79,42 @@
 
     <div id="head" class="row col-10">
         <div class="col-10">
-            <h2>Voluntarios ACNUR</h2>
+            <h2>Voluntarios Humanitarios ACNUR</h2>
         </div>
         <div id="addBtn" class="col-2">
-                <button onclick="window.location='/agregarVoluntario'" class="btn btn-success"><i class="fas fa-user-plus"></i></button>
+                <button onclick="window.location='/agregarVoluntarioH'" class="btn btn-success"><i class="fas fa-user-plus"></i></button>
             </div>
     </div>
     
     <table class="table table-hover col-10" id="cuotas">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Cedula</th>
-                <th>Nombre</th>
-                <th>Apellido1</th>
-                <th>Apellido2</th>
-                
+                <th>ID Voluntario</th>
+                <th>ID Voluntario Humanitario</th>
+                <th>Profesion</th>
+                <th>Disponibilidad</th>
+                <th>Cantidad de trabajos</th>
+              
             </tr>
         </thead>
         <tbody>
-            @foreach($voluntarios as $vol)
+            @foreach($voluntariosH as $vol)
             <tr>
                 <td>{{ $vol->voluntario_id }}</td>
-                <td>{{ $vol->cedula }}</td>
-                <td>{{ $vol->nombre }}</td>
-                <td>{{ $vol->apellido1 }}</td>
-                <td>{{ $vol->apellido2 }}</td>
+                <td>{{ $vol->voluntarioH_id }}</td>
+                <td>{{ $vol->profesion }}</td>
+                <td>{{ $vol->disponibilidad }}</td>
+                <td>{{ $vol->cantidad_de_trabajos }}</td>
                 
                 <td>
-                        <form action="{{url('voluntario/delete/' .$vol->voluntario_id)}}" method="post">
+                        <form action="{{url('voluntarioH/delete/' .$vol->voluntarioH_id)}}" method="post">
                             @csrf
                             <input name="_method" type="hidden" value="DELETE">
                             <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                     <td>
-                        <a href="{{url('/voluntario/edit/' .$vol->voluntario_id)}}"><i class="fas fa-edit"></i></a>
+                        <a href="{{url('/voluntarioH/edit/' .$vol->voluntarioH_id)}}"><i class="fas fa-edit"></i></a>
                     </td>
             
             </tr>

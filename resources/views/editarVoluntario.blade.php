@@ -58,67 +58,40 @@
         </div>
     </nav>
         <div class="container col-10">
-             @foreach($socio as $socios)
-            <form method="POST" action="{{url('socio/update/' .$socios->socio_id)}}">
+             @foreach($voluntarios as $vol)
+            <form method="POST" action="{{url('voluntario/update/' .$vol->voluntario_id)}}">
             @endforeach
                 @csrf
-                <h2>Agregar socio</h2>
+                <h2>Actualizar Voluntario</h2>
                 <hr>
                 <div class="row">
-                @foreach($socio as $socios)
+                @foreach($voluntarios as $vol)
                     <div class="col">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{$socios->nombre}}" required>
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{$vol->nombre}}" required>
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="apellido1" placeholder="Primer Apellido" value="{{$socios->apellido1}}" required>
+                        <input type="text" class="form-control" name="apellido1" placeholder="Primer Apellido" value="{{$vol->apellido1}}" required>
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="apellido2" placeholder="Segundo Apellido" value="{{$socios->apellido2}}" required>
+                        <input type="text" class="form-control" name="apellido2" placeholder="Segundo Apellido" value="{{$vol->apellido2}}" required>
                     </div>
                 @endforeach
+                    
+                
                     <div class="col">
-                        <select type="text" name="sede_fk" class="form-control" placeholder="Tipo cuota">
-                            @foreach($socio as $socios)
-                                <option value="{{$socios->sede_id}}" disabled selected>{{$socios->nombre_sede}}</option>
-                            @endforeach
-                            @foreach($sedes as $sede)
+                        <select type="text" name="sede_fk" class="form-control" placeholder="Sede">
+                        @foreach($sedes ?? '' as $sede)    
+                        <option value="{{$sede->sede_id}}" disabled selected>Seleccione sede</option>
+                        @endforeach
+                            @foreach($sedes ?? '' as $sede)
                                 <option value="{{$sede->sede_id}}">{{ $sede->nombre_sede }}</option>
                             @endforeach
                         </select>
                     </div>
-
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1"></label>
-                    @foreach($socio as $socios)
-                        <textarea placeholder="Domicilo" name="direccion" class="form-control" id="exampleFormControlTextarea1" rows="3" required>{{$socios->direccion}}</textarea>
-                    @endforeach
-                </div>
-
-                <div class="from-group row">
-                    
-                    <div class="col">
-                     @foreach($socio as $socios)
-                        <input type="text" name="cuanta_bancaria" class="form-control" placeholder="Número de cuenta" value="{{$socios->cuanta_bancaria}}" required>
-                     @endforeach
-                    </div>
-
-                    <div class="col">
-                        @foreach($socio as $socios)
-                            <input id="Fecha" type="date" class="form-control datepicker" value="{{$socios->fecha_pago}}" data-date-format="mm/dd/yyyy" name="fecha_pago" required>
-                        @endforeach
-                    </div>
-                     
-                    <div class="col">
-                        <select type="text" name="tipo_cuota_fk" class="form-control" required>
-                            @foreach($cuotas as $cuota)
-                                <option value="{{$cuota->cuota_id}}">{{ $cuota->cantidad }}</option>
-                            @endforeach
-                        </select>
-                    </div>
                 </div>
 
                 <div class="container">

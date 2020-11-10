@@ -6,18 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Voluntarios
+ * Class voluntarios
  * 
  * @property int $voluntario_id
  * @property string $cedula
  * @property string $nombre
  * @property string $apellido1
  * @property string $apellido2
- * @property string $profesion 
- * @property string $disponibilidad
- * @property string $cantidad_de_trabajos
- * @property int $tipovol_fk
  * @property int $sede_fk
+ * @property Collection|voluntariosH[] $voluntariosH
+ * @property Collection|voluntariosA[] $voluntariosA
  * 
  * @package App\Models
  */
@@ -26,8 +24,7 @@ class voluntarios extends Model
 {
     protected $table = 'voluntarios';
     protected $cast = [
-        'sede_fk' => 'int',
-        'tipovol_fk' => 'int'
+        'sede_fk' => 'int'
     ];
 
     protected $fillable = [
@@ -35,10 +32,6 @@ class voluntarios extends Model
         'nombre',
         'apellido1',
         'apellido2',
-        'profesion',
-        'disponibilidad',
-        'cantidad_de_trabajos',
-        'tipovol_fk',
         'sede_fk'
     ];
 
@@ -47,8 +40,12 @@ class voluntarios extends Model
         return $this->belongsTo(Sedes::class, 'sede_fk');
     }
 
-    public function tipo_voluntarios()
+    public function voluntariosH()
     {
-        return $this->belongsTo(Tipo_voluntarios::class, 'tipovol__fk');
+        return $this->hasMany(voluntariosH::class, 'voluntario_fk');
+    }
+    public function voluntariosA()
+    {
+        return $this->hasMany(voluntariosA::class, 'voluntario_fk');
     }
 }
