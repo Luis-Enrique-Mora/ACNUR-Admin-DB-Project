@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voluntarios</title>
+    <title>Tipo Voluntarios</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/css/app.css">
@@ -30,6 +30,9 @@
             margin-top: 50px;
         }
 
+        a:hover{
+                cursor: pointer;
+            }
     </style>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,19 +44,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                    <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('socios') }}">Socios</a>
+                    <a onclick="window.location='/socios'"  class="nav-link">Socios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('sedes') }}">Sedes</a>
+                    <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('voluntarios') }}">Voluntarios</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="{{ url('cuotas') }}">Coutas</a>
+                <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
                 </li>
                 </ul>
             </div>
@@ -62,42 +62,35 @@
 
     <div id="head" class="row col-10">
         <div class="col-10">
-            <h2>Voluntarios ACNUR</h2>
+            <h2>Tipo Voluntarios ACNUR</h2>
         </div>
         <div id="addBtn" class="col-2">
-                <button onclick="window.location='/agregarVoluntario'" class="btn btn-success"><i class="fas fa-user-plus"></i></button>
-            </div>
+            <button onclick="window.location='/agregarTipoVoluntario'" class="btn btn-success"><i class="fas fa-plus-square"></i></button>
+        </div>
     </div>
     
     <table class="table table-hover col-10" id="cuotas">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Cedula</th>
-                <th>Nombre</th>
-                <th>Apellido1</th>
-                <th>Apellido2</th>
+                <th>ID Tipo Voluntario</th>
                 <th>Tipo</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach($voluntarios as $vol)
+            @foreach($tipo_voluntario as $vol)
             <tr>
-                <td>{{ $vol->voluntario_id }}</td>
-                <td>{{ $vol->cedula }}</td>
-                <td>{{ $vol->nombre }}</td>
-                <td>{{ $vol->apellido1 }}</td>
-                <td>{{ $vol->apellido2 }}</td>
+                <td>{{ $vol->tipovol_id }}</td>
                 <td>{{ $vol->tipo }}</td>
                 <td>
-                    <form action="{{url('voluntario/delete/' .$->voluntario_id)}}" method="post">
+                    <form action="{{url('tipovoluntario/delete/' .$tipovoluntario->tipovol_id)}}" method="post">
                         @csrf
                         <input name="_method" type="hidden" value="DELETE">
                         <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
                     </form>
                 </td>
-                <td><i class="fas fa-edit"></i></td>
-            
+                <td><i class="fas fa-edit"></i></td> 
             </tr>
             @endforeach
         </tbody>

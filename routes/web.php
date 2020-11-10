@@ -3,6 +3,7 @@
 use App\Http\Controllers\CuotasController;
 use App\Http\Controllers\SedesController;
 use App\Http\Controllers\SociosController;
+use App\Http\Controllers\TipoVoluntarioController;
 use App\Http\Controllers\VoluntariosController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,4 +47,11 @@ Route::post('/voluntarios/add', [VoluntariosController::class, 'store']);
 Route::get('/voluntarios', [VoluntariosController::class, 'index']); 
 Route::get('/voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
 Route::post('/voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
-Route::delete('/voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
+Route::delete('voluntario/delete/{id}', [VoluntariosController::class, 'destroy']); 
+
+Route::get('/tipoVoluntarios', [TipoVoluntarioController::class, 'index']);
+Route::post('/tipoVoluntario/add', [TipoVoluntarioController::class, 'store']);
+Route::delete('tipovoluntario/delete/{id}', [TipoVoluntarioController::class, 'destroy']);
+Route::get('/agregarTipoVoluntario', function () {
+    return view('agregarTipoVoluntario');
+});

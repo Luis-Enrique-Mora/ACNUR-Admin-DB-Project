@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Voluntarios
+ * Class voluntarios
  * 
  * @property int $voluntario_id
  * @property string $cedula
