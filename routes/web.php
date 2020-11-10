@@ -5,6 +5,8 @@ use App\Http\Controllers\SedesController;
 use App\Http\Controllers\SociosController;
 use App\Http\Controllers\TipoVoluntarioController;
 use App\Http\Controllers\VoluntariosController;
+use App\Http\Controllers\EnviosController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +37,8 @@ Route::get('/agregarCuota', function () {
 Route::delete('socio/delete/{id}', [SociosController::class, 'destroy']);
 Route::delete('cuota/delete/{id}', [CuotasController::class, 'destroy']);
 Route::delete('sede/delete/{id}', [SedesController::class, 'destroy']);
+Route::get('/socio/edit/{id}', [SociosController::class, 'edit']);
+Route::post('socio/update/{id}', [SociosController::class, 'update']);
 
 Route::get('/agregarSede', function () {
     return view('agregarSede');
@@ -45,8 +49,28 @@ Route::get('/agregarVoluntario', function () {
 });
 Route::post('/voluntarios/add', [VoluntariosController::class, 'store']); 
 Route::get('/voluntarios', [VoluntariosController::class, 'index']); 
+<<<<<<< HEAD
+Route::get('voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
+Route::post('voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
+Route::delete('voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
+
+Route::get('/tipo/envios', [EnviosController::class, 'tipoEnvio']); 
+Route::get('/crear/tipo/envios/', [EnviosController::class, 'createTipoEnv']); 
+Route::post('/crear/tipo/envio', [EnviosController::class, 'crearTipoEnvio']); 
+Route::get('/editar/tipo/envio/{id}', [EnviosController::class, 'editarTipoEnv']); 
+Route::get('/editar/tipo/envio', [EnviosController::class, 'actualizarTipoEnvio']); 
+Route::get('/eliminar/tipo/envio/{id}', [EnviosController::class, 'eliminarTipoEnvio']); 
+
+Route::get('/lista/productos', [EnviosController::class, 'listarProductos']); 
+Route::get('/crear/productos', [EnviosController::class, 'crearProductos']); 
+Route::post('/agregar/productos', [EnviosController::class, 'agregarProducto']); 
+Route::get('/editar/producto/{id}', [EnviosController::class, 'editarProducto']); 
+Route::get('/editar/producto', [EnviosController::class, 'actualizarProducto']); 
+Route::get('/eliminar/producto/{id}', [EnviosController::class, 'eliminarProducto']); 
+=======
 Route::get('/voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
 Route::post('/voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
+<<<<<<< HEAD
 Route::delete('voluntario/delete/{id}', [VoluntariosController::class, 'destroy']); 
 
 Route::get('/tipoVoluntarios', [TipoVoluntarioController::class, 'index']);
@@ -55,3 +79,7 @@ Route::delete('tipovoluntario/delete/{id}', [TipoVoluntarioController::class, 'd
 Route::get('/agregarTipoVoluntario', function () {
     return view('agregarTipoVoluntario');
 });
+=======
+Route::delete('/voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
+>>>>>>> ceceaa5b2683b7e086860b813cfc5394971150b1
+>>>>>>> 92f0ed2b47b961af1c1993372a3680ea6388607e

@@ -16,18 +16,28 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a onclick="window.location='/socios'"  class="nav-link">Socios</a>
-                </li>
-                <li class="nav-item">
-                    <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
-                </li>
-                <li class="nav-item">
-                <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
-                </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="window.location='/socios'"  class="nav-link">Socios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
+                    </li>
+                    <li class="nav-item">
+                    <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Envios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Envios</a>
+                          <a class="dropdown-item" href="{{url('/lista/productos')}}">Productos</a>
+                          <a class="dropdown-item" href="{{url('/tipo/envios')}}">Tipo Envios</a>
+                        </div>
+                      </li>
                 </ul>
             </div>
         </div>
