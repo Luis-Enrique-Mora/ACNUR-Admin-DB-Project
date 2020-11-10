@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sedes</title>
+    <title>Socios</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
@@ -29,6 +29,10 @@
                 margin-top: 50px;
             }
 
+            a:hover{
+                cursor: pointer;
+            }
+
         </style>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -49,7 +53,7 @@
                         <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
                     </li>
                     <li class="nav-item">
-                    <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
+                        <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
                     </li>
                     </ul>
                 </div>
@@ -91,8 +95,14 @@
                     <td>{{ $socio->cuanta_bancaria }}</td>
                     <td>{{ $socio->tipo }}</td>
                     <td>{{ \Carbon\Carbon::parse($socio->fecha_pago)->format('j F') }}</td>
-                    <td><i class="fas fa-trash"></i></td>
-                <td><i class="fas fa-edit"></i></td> 
+                    <td>
+                        <form action="{{url('socio/delete/' .$socio->socio_id)}}" method="post">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
+                        </form>
+                    </td>
+                    <td><i class="fas fa-edit"></i></td>
                 </tr>
                 @endforeach
             </tbody>

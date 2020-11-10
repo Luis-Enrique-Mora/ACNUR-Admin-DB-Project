@@ -93,6 +93,7 @@ class SociosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete("execute borrar_socio ?", array($id));
+        return redirect('/socios')->with('success', 'se eliminó el socio');
     }
 }

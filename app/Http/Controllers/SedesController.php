@@ -84,6 +84,7 @@ class SedesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete("execute eliminar_sede ?", array($id));
+        return redirect('/sedes')->with('success', 'se eliminó la sede');
     }
 }
