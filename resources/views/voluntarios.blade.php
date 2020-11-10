@@ -69,7 +69,7 @@
             </div>
     </div>
     
-    <table class="table table-hover col-10" id="voluntarios">
+    <table class="table table-hover col-10" id="cuotas">
         <thead>
             <tr>
                 <th>ID</th>
@@ -89,15 +89,14 @@
                 <td>{{ $vol->apellido1 }}</td>
                 <td>{{ $vol->apellido2 }}</td>
                 <td>{{ $vol->tipo }}</td>
-                
-                <td><a href="{{action('VoluntariosController@edit', $vol->id)}}" class="btn btn-warning">Edit</a></td>
                 <td>
-                <form action="{{action('VoluntariosController@destroy', $vol->id)}}" method="post">
-                @csrf
-                <input name="_method" type="hidden" value="DELETE">
-                <button class="btn btn-danger" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit">Delete</button>
-                </form>
+                    <form action="{{url('voluntario/delete/' .$->voluntario_id)}}" method="post">
+                        @csrf
+                        <input name="_method" type="hidden" value="DELETE">
+                        <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
+                    </form>
                 </td>
+                <td><i class="fas fa-edit"></i></td>
             
             </tr>
             @endforeach

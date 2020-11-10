@@ -34,8 +34,8 @@ class VoluntariosController extends Controller
 
     public function index()
     {
-        $vol = DB::select('Execute SP_ListadoVoluntarios');
-        return View('/voluntarios')->with('voluntarios', $vol);
+        $voluntarios = DB::select('Execute SP_ListadoVoluntarios');
+        return View('/voluntarios')->with('voluntarios', $voluntarios);
     }
 
     public function edit($id)
@@ -51,6 +51,7 @@ class VoluntariosController extends Controller
 
     public function destroy($id)
     {
-        
+        DB::delete("execute SP_EliminarVoluntarios ?", array($id));
+        return redirect('/voluntarios')->with('success', 'se eliminó el voluntario');
     }
 }
