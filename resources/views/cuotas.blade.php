@@ -113,8 +113,13 @@
                     </form>
                 </td>
                 <td>
+<<<<<<< HEAD
                         <a href="{{url('/cuota/edit/' .$cuota->cuota_id)}}"><i class="fas fa-edit"></i></a>
                     </td>
+=======
+                    <a href="{{url('/cuota/edit/' .$cuota->cuota_id)}}"><i class="fas fa-edit"></i></a>
+                </td> 
+>>>>>>> 9391ff0ab571e77f8e0e448eb4069934f80b7708
             </tr>
             @endforeach
         </tbody>

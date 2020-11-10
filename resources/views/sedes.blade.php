@@ -80,9 +80,14 @@
     </nav>
 
         <div id="head" class="row col-10">
-            <div class="col-10">
+            <div class="col-4">
                 <h2>Sedes ACNUR</h2>
             </div>
+
+            <div id="addBtn" class="col-4">
+                <button onclick="window.location='/sedesMayorIngreso'" class="btn btn-success">Cantidad de socios por cuotas</button>
+            </div>
+
             <div id="addBtn" class="col-2">
                 <button onclick="window.location='/agregarSede'" class="btn btn-success"><i class="fas fa-plus-square"></i></button>
             </div>

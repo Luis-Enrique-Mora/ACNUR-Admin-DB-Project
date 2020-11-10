@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Socios;
+use Doctrine\DBAL\Schema\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -52,15 +53,10 @@ class SociosController extends Controller
         return redirect('/socios')->with('success', 'se agregó el socio');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function reposteSociosPorCuotas()
     {
-        //
+        $reportes = DB::select('execute cantidad_socios_por_cuota');
+        return View('cantidadSocioCuota')->with('reportes', $reportes);
     }
 
     /**

@@ -81,8 +81,11 @@
     </nav>
 
         <div id="head" class="row col-10">
-            <div class="col-10">
+            <div class="col-4">
                 <h2>Socios ACNUR</h2>
+            </div>
+            <div id="addBtn" class="col-4">
+                <button onclick="window.location='/socioPorCuota'" class="btn btn-success">Cantidad de socios por cuotas</button>
             </div>
             <div id="addBtn" class="col-2">
                 <button onclick="window.location='/agregarSocio'" class="btn btn-success"><i class="fas fa-user-plus"></i></button>
