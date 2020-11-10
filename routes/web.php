@@ -51,14 +51,11 @@ Route::get('/agregarSede', function () {
 Route::get('/agregarVoluntario', function () {
     return view('agregarVoluntario');
 });
-<<<<<<< HEAD
 Route::post('/voluntarios/add', [VoluntariosController::class, 'store']); 
 Route::get('/voluntarios', [VoluntariosController::class, 'index']); 
 Route::get('voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
 Route::post('voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
 Route::delete('voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
-=======
->>>>>>> 069d233a2809551e1d739ae24a8c016bbf005aa3
 
 Route::get('/agregarVoluntario', [VoluntariosController::class, 'createView']);
 Route::get('/voluntarios', [VoluntariosController::class, 'index']);
@@ -96,9 +93,8 @@ Route::post('voluntarioH/update/{id}', [VoluntariosHController::class, 'update']
 Route::delete('voluntarioH/delete/{id}', [VoluntariosHController::class, 'destroy']); 
 
 
-/*
 
-<<<<<<< HEAD
+ 
 Route::get('/tipo/envios', [EnviosController::class, 'tipoEnvio']); 
 Route::get('/crear/tipo/envios/', [EnviosController::class, 'createTipoEnv']); 
 Route::post('/crear/tipo/envio', [EnviosController::class, 'crearTipoEnvio']); 
@@ -112,7 +108,7 @@ Route::post('/agregar/productos', [EnviosController::class, 'agregarProducto']);
 Route::get('/editar/producto/{id}', [EnviosController::class, 'editarProducto']); 
 Route::get('/editar/producto', [EnviosController::class, 'actualizarProducto']); 
 Route::get('/eliminar/producto/{id}', [EnviosController::class, 'eliminarProducto']); 
-<<<<<<< HEAD
+ 
 Route::get('/lista/envios', [EnviosController::class, 'listarEnvios']); 
 
 Route::get('/crear/envio', [EnviosController::class, 'crearAyuda']); 
@@ -120,16 +116,4 @@ Route::get('/crear/envio', [EnviosController::class, 'crearAyuda']);
 Route::post('/agregar/envio', [EnviosController::class, 'agregarEnvio']); 
 
 Route::get('/crear/datos/envio', [EnviosController::class, 'datosEnvio']); 
-=======
-=======
-
-<<<<<<< HEAD
-
-
-
-=======
-
->>>>>>> ceceaa5b2683b7e086860b813cfc5394971150b1
->>>>>>> 92f0ed2b47b961af1c1993372a3680ea6388607e
-*/
->>>>>>> 069d233a2809551e1d739ae24a8c016bbf005aa3
+ 
