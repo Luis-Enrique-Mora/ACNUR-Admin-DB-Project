@@ -61,54 +61,23 @@
         </nav>
 
         <div id="head" class="row col-10">
-            <div class="col-4">
-                <h2>Socios ACNUR</h2>
-            </div>
-            <div id="addBtn" class="col-4">
-                <button onclick="window.location='/socioPorCuota'" class="btn btn-success">Cantidad de socios por cuotas</button>
-            </div>
-            <div id="addBtn" class="col-2">
-                <button onclick="window.location='/agregarSocio'" class="btn btn-success"><i class="fas fa-user-plus"></i></button>
+            <div class="col-10">
+                <h2>Reporte de cantidad de socios por cuotas</h2>
             </div>
         </div>
         <table class="table table-hover col-10" id="cuotas">
             <thead>
                 <tr>
-                    <th>ID Socio</th>
-                    <th>Nombre Socio</th>
-                    <th>Apellido 1</th>
-                    <th>Apellido 2</th>
-                    <th>Domicilio</th>
-                    <th>Cuenta bancaria</th>
-                    <th>Cuota</th>
-                    <th>fecha de pago</th>
-                    <th></th>
-                    <th></th>
-                    
+                    <th>tipo cuota</th>
+                    <th>Cantidad de socios</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($socios as $socio)
-                <tr>
-                    <td>{{ $socio->socio_id }}</td>
-                    <td>{{ $socio->nombre }}</td>
-                    <td>{{ $socio->apellido1 }}</td>
-                    <td>{{ $socio->apellido2 }}</td>
-                    <td>{{ $socio->direccion }}</td>
-                    <td>{{ $socio->cuanta_bancaria }}</td>
-                    <td>{{ $socio->tipo }}</td>
-                    <td>{{ \Carbon\Carbon::parse($socio->fecha_pago)->format('j F') }}</td>
-                    <td>
-                        <form action="{{url('socio/delete/' .$socio->socio_id)}}" method="post">
-                            @csrf
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
-                        </form>
-                    </td>
-                    <td>
-                        <a href="{{url('/socio/edit/' .$socio->socio_id)}}"><i class="fas fa-edit"></i></a>
-                    </td>
-                </tr>
+                @foreach($reportes as $reporte)
+                    <tr>
+                        <td>{{ $reporte->cuota }}</td>
+                        <td>{{ $reporte->cantidad_socios }}</td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>

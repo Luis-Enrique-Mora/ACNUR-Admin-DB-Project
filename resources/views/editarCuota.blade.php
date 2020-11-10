@@ -58,28 +58,28 @@
     </nav>
 
     <div class="container">
-    <form method="POST" action="/cuota/update/">
-                @csrf
-                <h2>Editar cuota</h2>
-                <hr>
-                <div class="row">
-                    @foreach($cuota as $cuotas)
-                        <input hidden name="id" value="{{$cuotas->cuota_id}}" type="number">
-                        <div class="col">
-                            <input type="text" value="{{$cuotas->tipo}}" class="form-control" name="tipo" placeholder="Nombre cuota" required>
-                        </div>
+        <form method="POST" action="/cuota/update/">
+            @csrf
+            <h2>Editar cuota</h2>
+            <hr>
+            <div class="row">
+                @foreach($cuota as $cuotas)
+                    <input hidden name="id" value="{{$cuotas->cuota_id}}" type="number">
+                    <div class="col">
+                        <input type="text" value="{{$cuotas->tipo}}" class="form-control" name="tipo" placeholder="Nombre cuota" required>
+                    </div>
 
-                        <div class="col">
-                            <input type="text" value="{{$cuotas->cantidad}}" class="form-control" name="cantidad" placeholder="Monto" required>
-                        </div>
+                    <div class="col">
+                        <input type="text" value="{{$cuotas->cantidad}}" class="form-control" name="cantidad" placeholder="Monto" required>
+                    </div>
 
-                    @endforeach
-                </div>
+                @endforeach
+            </div>
 
-                <div class="container">
-                    <button type="submit" class="mt-5 col-5 btn btn-success btn-block">Actualizar</button> 
-                </div>
-            </form>
+            <div class="container">
+                <button type="submit" class="mt-5 col-5 btn btn-success btn-block">Actualizar</button> 
+            </div>
+        </form>
 
     </div>
 
