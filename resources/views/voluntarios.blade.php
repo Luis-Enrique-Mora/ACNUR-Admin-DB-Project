@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cuotas</title>
+    <title>Voluntarios</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/css/app.css">
@@ -65,8 +65,8 @@
             <h2>Voluntarios ACNUR</h2>
         </div>
         <div id="addBtn" class="col-2">
-            <button class="btn btn-success"><i class="fas fa-plus-square"></i></button>
-        </div>
+                <button onclick="window.location='/agregarVoluntario'" class="btn btn-success"><i class="fas fa-user-plus"></i></button>
+            </div>
     </div>
     
     <table class="table table-hover col-10" id="voluntarios">
@@ -77,15 +77,18 @@
                 <th>Nombre</th>
                 <th>Apellido1</th>
                 <th>Apellido2</th>
+                <th>Tipo</th>
             </tr>
         </thead>
         <tbody>
             @foreach($voluntarios as $vol)
             <tr>
                 <td>{{ $vol->voluntario_id }}</td>
+                <td>{{ $vol->cedula }}</td>
                 <td>{{ $vol->nombre }}</td>
                 <td>{{ $vol->apellido1 }}</td>
                 <td>{{ $vol->apellido2 }}</td>
+                <td>{{ $vol->tipo }}</td>
                 
                 <td><a href="{{action('VoluntariosController@edit', $vol->id)}}" class="btn btn-warning">Edit</a></td>
                 <td>
