@@ -117,7 +117,7 @@
                         </form>
                     </td>
                     <td>
-                        <a href="{{url('/voluntarioH/edit/' .$vol->voluntarioH_id)}}"><i class="fas fa-edit"></i></a>
+      
                     </td>
             
             </tr>
