@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="col">
-                        <select type="text" name="sede_fk" class="form-control" placeholder="Sede">
+                        <select type="text" name="sede_fk" class="form-control" placeholder="Sede" required>
                             <option value="" disabled selected>Seleccione sede</option>
                             @foreach($sedes ?? '' as $sede)
                                 <option value="{{$sede->sede_id}}">{{ $sede->nombre_sede }}</option>

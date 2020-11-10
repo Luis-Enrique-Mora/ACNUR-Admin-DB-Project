@@ -86,27 +86,31 @@
                 <hr>
                 <div class="row">
                 @foreach($voluntariosH as $vol)
-                <input hidden name="id" value="{{$vol->voluntarioH_id}}" type="number">
+                
                     <div class="col">
-                        <input type="text" class="form-control" name="profesion" value="{{$vol->profesion}}" placeholder="Profesion" >
+                        <input type="text" class="form-control" name="profesion" value="{{$vol->profesion}}" placeholder="Profesion" required>
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="disponibilidad" value="{{$vol->disponibilidad}}" placeholder="Disponibilidad" >
+                        <input type="text" class="form-control" name="disponibilidad" value="{{$vol->disponibilidad}}" placeholder="Disponibilidad" required>
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="cantidad_de_trabajos" value="{{$vol->cantidad_de_trabajos}}" placeholder="Cantidad de trabajos " >
+                        <input type="text" class="form-control" name="cantidad_de_trabajos" value="{{$vol->cantidad_de_trabajos}}" placeholder="Cantidad de trabajos" required>
                     </div>
                     @endforeach
+
                     <div class="col">
-                        <select type="text" name="voluntario_fk" class="form-control" placeholder="Voluntario">
-                            <option value="" disabled selected>Seleccione voluntario</option>
+                        <select type="text" name="voluntario_fk" class="form-control" placeholder="Voluntario" required>
+                        @foreach($voluntariosH ?? '' as $vol)    
+                        <option value="{{$vol->voluntarioH_id}}" disabled selected>Seleccione Voluntario</option>
+                        @endforeach
                             @foreach($voluntarios ?? '' as $voluntario)
                                 <option value="{{$voluntario->voluntario_id}}">{{ $voluntario->voluntario_id }}</option>
                             @endforeach
                         </select>
                     </div>
+
                 </div>
 
                

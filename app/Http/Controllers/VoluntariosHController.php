@@ -36,18 +36,18 @@ class VoluntariosHController extends Controller
 
     public function edit($id)
     {
-        $voluntarios = DB::select('execute SP_BuscarVoluntariosID ?', array($id));
-        return View('editarVoluntarioH')->with('voluntariosH', $voluntarios);
+        $voluntariosH = DB::select('execute SP_BuscarVoluntariosID ?', array($id));
+        return View('editarVoluntarioH')->with('voluntariosH', $voluntariosH);
     }
 
     public function update(Request $request)
     {   
-        $id= $request->get("id");
+        $voluntarioH_id= $request->get("voluntarioH_id");
         $profesion= $request->get("profesion");
         $disponibilidad= $request->get("disponibilidad");
         $cantidad_de_trabajos = $request->get("cantidad_de_trabajos");
         $voluntario_fk = $request->get("voluntario_fk");
-        $values = [$id, $profesion, $disponibilidad, $cantidad_de_trabajos,$voluntario_fk];
+        $values = [$voluntarioH_id, $profesion, $disponibilidad, $cantidad_de_trabajos,$voluntario_fk];
 
         DB::insert("Execute ActualizarVoluntarios_H ?,?,?,?,?", $values);
         return redirect('/voluntariosH')->with('success', 'se actualizó el voluntario'); 

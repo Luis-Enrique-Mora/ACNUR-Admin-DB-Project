@@ -85,19 +85,19 @@
                 <div class="row">
 
                     <div class="col">
-                        <input type="text" class="form-control" name="profesion" placeholder="Profesion" >
+                        <input type="text" class="form-control" name="profesion" placeholder="Profesion" required>
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="disponibilidad" placeholder="Disponibilidad" >
+                        <input type="text" class="form-control" name="disponibilidad" placeholder="Disponibilidad" required>
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="cantidad_de_trabajos" placeholder="Cantidad de trabajos " >
+                        <input type="text" class="form-control" name="cantidad_de_trabajos" placeholder="Cantidad de trabajos " required>
                     </div>
 
                     <div class="col">
-                        <select type="text" name="voluntario_fk" class="form-control" placeholder="Voluntario">
+                        <select type="text" name="voluntario_fk" class="form-control" placeholder="Voluntario" required>
                             <option value="" disabled selected>Seleccione voluntario</option>
                             @foreach($voluntarios ?? '' as $voluntario)
                                 <option value="{{$voluntario->voluntario_id}}">{{ $voluntario->voluntario_id }}</option>
