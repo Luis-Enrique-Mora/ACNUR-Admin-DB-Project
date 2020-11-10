@@ -32,7 +32,7 @@
 
     </style>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">ACNUR Systems</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,21 +40,38 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('/') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('socios') }}">Socios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('sedes') }}">Sedes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('voluntarios') }}">Voluntarios</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="{{ url('cuotas') }}">Coutas</a>
-                </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="window.location='/socios'"  class="nav-link">Socios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
+                    </li>
+                    <li class="nav-item">
+                    <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Envios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Envios</a>
+                          <a class="dropdown-item" href="{{url('/lista/productos')}}">Productos</a>
+                          <a class="dropdown-item" href="{{url('/tipo/envios')}}">Tipo Envios</a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Voluntarios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{url('/voluntarios')}}">Voluntarios</a>
+                          <a class="dropdown-item" href="{{url('/voluntariosA')}}">Voluntarios Administrativos</a>
+                          <a class="dropdown-item" href="{{url('/voluntariosH')}}">Voluntarios Humanitarios</a>
+                        </div>
+                      </li>
                 </ul>
             </div>
         </div>
@@ -77,7 +94,7 @@
                 <th>Nombre</th>
                 <th>Apellido1</th>
                 <th>Apellido2</th>
-                <th>Tipo</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -88,14 +105,14 @@
                 <td>{{ $vol->nombre }}</td>
                 <td>{{ $vol->apellido1 }}</td>
                 <td>{{ $vol->apellido2 }}</td>
-                <td>{{ $vol->tipo }}</td>
+                
                 <td>
-                    <form action="{{url('voluntario/delete/' .$->voluntario_id)}}" method="post">
-                        @csrf
-                        <input name="_method" type="hidden" value="DELETE">
-                        <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
-                    </form>
-                </td>
+                        <form action="{{url('voluntario/delete/' .$vol->voluntario_id)}}" method="post">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
+                        </form>
+                    </td>
                 <td><i class="fas fa-edit"></i></td>
             
             </tr>
@@ -103,6 +120,10 @@
         </tbody>
     </table>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+
 </html>
 
 

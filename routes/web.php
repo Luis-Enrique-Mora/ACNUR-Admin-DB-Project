@@ -6,7 +6,8 @@ use App\Http\Controllers\SociosController;
 use App\Http\Controllers\TipoVoluntarioController;
 use App\Http\Controllers\VoluntariosController;
 use App\Http\Controllers\EnviosController;
-
+use App\Http\Controllers\VoluntariosAController;
+use App\Http\Controllers\VoluntariosHController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,13 +45,47 @@ Route::get('/agregarSede', function () {
     return view('agregarSede');
 });
 
+/*
+    VOLUNTARIOS
+*/
+Route::get('/agregarVoluntario', function () {
+    return view('agregarVoluntario');
+});
 
+Route::get('/agregarVoluntario', [VoluntariosController::class, 'createView']);
 Route::get('/voluntarios', [VoluntariosController::class, 'index']);
 Route::post('/agregarVoluntario/add', [VoluntariosController::class, 'store']); 
-Route::get('/voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
+Route::get('/voluntario/edit/{id}', [VoluntariosController::class, 'edit']); 
 Route::post('voluntario/update/{id}', [VoluntariosController::class, 'update']); 
 Route::delete('voluntario/delete/{id}', [VoluntariosController::class, 'destroy']); 
 
+/*
+    VOLUNTARIOS ADMINISTRATIVOS
+*/
+Route::get('/agregarVoluntarioA', function () {
+    return view('agregarVoluntarioA');
+});
+
+Route::get('/agregarVoluntarioA', [VoluntariosAController::class, 'createView']);
+Route::get('/voluntariosA', [VoluntariosAController::class, 'index']);
+Route::post('/agregarVoluntarioA/add', [VoluntariosAController::class, 'store']); 
+Route::get('/voluntarioA/edit/{id}', [VoluntariosAController::class, 'edit']); 
+Route::post('voluntarioA/update/{id}', [VoluntariosAController::class, 'update']); 
+Route::delete('voluntarioA/delete/{id}', [VoluntariosAController::class, 'destroy']); 
+
+/*
+    VOLUNTARIOS HUMANITARIOS
+*/
+Route::get('/agregarVoluntarioH', function () {
+    return view('agregarVoluntarioH');
+});
+
+Route::get('/agregarVoluntarioH', [VoluntariosHController::class, 'createView']);
+Route::get('/voluntariosH', [VoluntariosHController::class, 'index']);
+Route::post('/agregarVoluntarioH/add', [VoluntariosHController::class, 'store']); 
+Route::get('/voluntarioH/edit/{id}', [VoluntariosHController::class, 'edit']); 
+Route::post('voluntarioH/update/{id}', [VoluntariosHController::class, 'update']); 
+Route::delete('voluntarioH/delete/{id}', [VoluntariosHController::class, 'destroy']); 
 
 
 /*

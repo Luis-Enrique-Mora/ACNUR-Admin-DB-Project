@@ -58,36 +58,11 @@
     </nav>
         <div class="container col-10">
 
-            <form method="POST" action="agregarVoluntario/add">
+            <form method="POST" action="agregarVoluntarioH/add">
                 @csrf
                 <h2>Agregar Voluntario</h2>
                 <hr>
                 <div class="row">
-
-                    <div class="col">
-                        <input type="text" class="form-control" name="cedula" placeholder="Cedula" required>
-                    </div>
-
-                    <div class="col">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
-                    </div>
-
-                    <div class="col">
-                        <input type="text" class="form-control" name="apellido1" placeholder="Primer Apellido" required>
-                    </div>
-
-                    <div class="col">
-                        <input type="text" class="form-control" name="apellido2" placeholder="Segundo Apellido" required>
-                    </div>
-
-                    <div class="col">
-                        <select type="text" name="tipovol_fk" class="form-control" required>
-                            <option value="" disabled selected>Seleccione Tipo</option>
-                            @foreach($tipo_voluntario as $tipovol)
-                                <option value="{{$tipovol->tipovol_id}}">{{ $tipovol->tipo }}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
                     <div class="col">
                         <input type="text" class="form-control" name="profesion" placeholder="Profesion" >
@@ -98,14 +73,14 @@
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="cantidad_de_trabajos " placeholder="Cantidad de trabajos " >
+                        <input type="text" class="form-control" name="cantidad_de_trabajos" placeholder="Cantidad de trabajos " >
                     </div>
 
                     <div class="col">
-                        <select type="text" name="sede_fk" class="form-control" placeholder="Sede">
-                            <option value="" disabled selected>Seleccione sede</option>
-                            @foreach($sedes ?? '' as $sede)
-                                <option value="{{$sede->sede_id}}">{{ $sede->nombre_sede }}</option>
+                        <select type="text" name="voluntario_fk" class="form-control" placeholder="Voluntario">
+                            <option value="" disabled selected>Seleccione voluntario</option>
+                            @foreach($voluntarios ?? '' as $voluntario)
+                                <option value="{{$voluntario->voluntario_id}}">{{ $voluntario->voluntario_id }}</option>
                             @endforeach
                         </select>
                     </div>
