@@ -48,7 +48,6 @@ Route::get('/agregarVoluntario', function () {
 });
 Route::post('/voluntarios/add', [VoluntariosController::class, 'store']); 
 Route::get('/voluntarios', [VoluntariosController::class, 'index']); 
-<<<<<<< HEAD
 Route::get('voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
 Route::post('voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
 Route::delete('voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
@@ -66,8 +65,10 @@ Route::post('/agregar/productos', [EnviosController::class, 'agregarProducto']);
 Route::get('/editar/producto/{id}', [EnviosController::class, 'editarProducto']); 
 Route::get('/editar/producto', [EnviosController::class, 'actualizarProducto']); 
 Route::get('/eliminar/producto/{id}', [EnviosController::class, 'eliminarProducto']); 
-=======
-Route::get('/voluntarios/edit/{id}', [VoluntariosController::class, 'edit']); 
-Route::post('/voluntarios/edit/{id}', [VoluntariosController::class, 'update']); 
-Route::delete('/voluntarios/{id}', [VoluntariosController::class, 'destroy']); 
->>>>>>> ceceaa5b2683b7e086860b813cfc5394971150b1
+Route::get('/lista/envios', [EnviosController::class, 'listarEnvios']); 
+
+Route::get('/crear/envio', [EnviosController::class, 'crearAyuda']); 
+
+Route::post('/agregar/envio', [EnviosController::class, 'agregarEnvio']); 
+
+Route::get('/crear/datos/envio', [EnviosController::class, 'datosEnvio']); 

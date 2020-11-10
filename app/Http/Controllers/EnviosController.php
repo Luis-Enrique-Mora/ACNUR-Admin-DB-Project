@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Tipo_Envios;
+use App\Models\Productos;
 use SebastianBergmann\Environment\Console;
 
 class EnviosController extends Controller
@@ -19,6 +20,7 @@ class EnviosController extends Controller
     public function createTipoEnv(){
         return view('envios.agregar-tipo-envio');
     }
+
     public function crearTipoEnvio(Request $request){
         $descripcion = $request->get('descripcion');
         $values = [$descripcion];
@@ -31,6 +33,7 @@ class EnviosController extends Controller
         $tipo_envio = DB::select('Execute obtener_tipo_envio_by_id ?', $values);
         return view('envios.editar-tipo-envio')->with('tipo_envio', $tipo_envio);
     }
+
     public function actualizarTipoEnvio(Request $request){
         $idTipoEnv = $request->get('idTipoEnv');
         $descripcion = $request->get('descripcion');
@@ -49,10 +52,12 @@ class EnviosController extends Controller
         $productos = DB::select('Execute listar_productos');
         return View('/envios.listar-productos')->with('productos', $productos);
     }
+
     public function crearProductos(){
         $tipo_envio = DB::select('Execute sp_tipo_envios');
         return View('envios.agregar-producto')->with('tipo_envio', $tipo_envio);
     }
+
     public function agregarProducto(Request $request){
         // dd($request);
         $descripcion = $request->get('descripcion');
@@ -67,14 +72,40 @@ class EnviosController extends Controller
         $values = [$id];
         $producto = DB::select('Execute listar_productos_by_id ?', $values);
         $tipo_envio = DB::select('Execute sp_tipo_envios');
-        return view('envios.editar-producto')->with('producto',$producto,'tipo_envio',$tipo_envio);
+        return view('envios.editar-producto')->with('producto',$producto)->with('tipo_envio',$tipo_envio);
     }
+
     public function actualizarProducto(Request $request){
-        dd($request);
+        $idProducto = $request->get('idProducto');
+        $descripcion = $request->get('descripcion');
+        $idTipoEnv = $request->get('idTipoEnv');
+        $values = [$idProducto,$descripcion,$idTipoEnv];
+        
+        DB::insert("execute actualizar_producto ?,?,?", $values);
+        return redirect('/lista/productos')->with('success', 'se agregó el tipo de envio');
     }
+    
     public function eliminarProducto($id){
         $values = [$id];
         DB::insert("execute eliminar_producto ?", $values);
         return redirect('/lista/productos')->with('success', 'se eliminó el producto');
+    }
+
+    public function listarEnvios(){
+
+    }
+    public function crearAyuda(){
+        return view('envios.agregar-envios');
+    }
+    public function agregarEnvio(Request $request){
+        $destino = $request->get('destino');
+        $fecha_env = $request->get('fecha_env');
+        $values = ['',$destino,$fecha_env];
+        DB::insert("execute insertar_envio ?,?,?", $values);
+        $productos = DB::select('Execute listar_productos');
+        return view('envios.agregar_datos_env')->with('productos',$productos);
+    }
+    public function datosEnvio(Request $request){
+        dd($request);
     }
 }
