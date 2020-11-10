@@ -41,6 +41,7 @@ Route::delete('sede/delete/{id}', [SedesController::class, 'destroy']);
 Route::get('/socio/edit/{id}', [SociosController::class, 'edit']);
 Route::post('socio/update/{id}', [SociosController::class, 'update']);
 
+
 Route::get('/agregarSede', function () {
     return view('agregarSede');
 });

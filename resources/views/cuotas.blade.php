@@ -43,18 +43,38 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a onclick="window.location='/socios'"  class="nav-link">Socios</a>
-                </li>
-                <li class="nav-item">
-                    <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
-                </li>
-                <li class="nav-item">
-                <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
-                </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="window.location='/socios'"  class="nav-link">Socios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
+                    </li>
+                    <li class="nav-item">
+                    <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Envios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{url('/crear/envio')}}">Envios</a>
+                          <a class="dropdown-item" href="{{url('/lista/productos')}}">Productos</a>
+                          <a class="dropdown-item" href="{{url('/tipo/envios')}}">Tipo Envios</a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Voluntarios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{url('/voluntarios')}}">Voluntarios</a>
+                          <a class="dropdown-item" href="{{url('/voluntariosA')}}">Voluntarios Administrativos</a>
+                          <a class="dropdown-item" href="{{url('/voluntariosH')}}">Voluntarios Humanitarios</a>
+                        </div>
+                      </li>
                 </ul>
             </div>
         </div>
@@ -92,12 +112,17 @@
                         <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
                     </form>
                 </td>
-                <td><i class="fas fa-edit"></i></td> 
+                <td>
+                        <a href="{{url('/cuota/edit/' .$cuota->cuota_id)}}"><i class="fas fa-edit"></i></a>
+                    </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
 </html>
 
 

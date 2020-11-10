@@ -36,11 +36,11 @@ class VoluntariosController extends Controller
     public function edit($id)
     {
         $voluntarios = DB::select('execute SP_BuscarVoluntariosID ?', array($id));
-        $sedes = DB::select('select * from View_sede_voluntario');
+        $sedes = DB::select('select * from View_sede_voluntario', array($id));
         return View('editarVoluntario', compact('sedes','voluntarios'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, voluntarios $voluntarios)
     {
         
         $nombre= $request->get("nombre");
@@ -49,7 +49,7 @@ class VoluntariosController extends Controller
         $sede_fk = $request->get("sede_fk");
         $values = [$nombre, $apellido1, $apellido2, $sede_fk];
 
-        DB::update("Execute SP_ActualizarVoluntarios ?,?,?,?", $values, array($id));
+        DB::insert("Execute SP_ActualizarVoluntarios ?,?,?,?", $values);
         return redirect('/voluntarios')->with('success', 'se actualizó el voluntario'); 
     }
 

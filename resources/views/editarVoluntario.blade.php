@@ -41,18 +41,38 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a onclick="window.location='/socios'"  class="nav-link">Socios</a>
-                </li>
-                <li class="nav-item">
-                    <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
-                </li>
-                <li class="nav-item">
-                <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
-                </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="window.location='/socios'"  class="nav-link">Socios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="window.location='/sedes'" class="nav-link">Sedes</a>
+                    </li>
+                    <li class="nav-item">
+                    <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Envios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{url('/crear/envio')}}">Envios</a>
+                          <a class="dropdown-item" href="{{url('/lista/productos')}}">Productos</a>
+                          <a class="dropdown-item" href="{{url('/tipo/envios')}}">Tipo Envios</a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Voluntarios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{url('/voluntarios')}}">Voluntarios</a>
+                          <a class="dropdown-item" href="{{url('/voluntariosA')}}">Voluntarios Administrativos</a>
+                          <a class="dropdown-item" href="{{url('/voluntariosH')}}">Voluntarios Humanitarios</a>
+                        </div>
+                      </li>
                 </ul>
             </div>
         </div>
@@ -82,8 +102,8 @@
                 
                     <div class="col">
                         <select type="text" name="sede_fk" class="form-control" placeholder="Sede">
-                        @foreach($sedes ?? '' as $sede)    
-                        <option value="{{$sede->sede_id}}" disabled selected>Seleccione sede</option>
+                        @foreach($voluntarios ?? '' as $vol)    
+                        <option value="{{$vol->voluntario_id}}" disabled selected>Seleccione sede</option>
                         @endforeach
                             @foreach($sedes ?? '' as $sede)
                                 <option value="{{$sede->sede_id}}">{{ $sede->nombre_sede }}</option>

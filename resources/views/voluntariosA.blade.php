@@ -57,7 +57,7 @@
                           Envios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Envios</a>
+                          <a class="dropdown-item" href="{{url('/crear/envio')}}">Envios</a>
                           <a class="dropdown-item" href="{{url('/lista/productos')}}">Productos</a>
                           <a class="dropdown-item" href="{{url('/tipo/envios')}}">Tipo Envios</a>
                         </div>
