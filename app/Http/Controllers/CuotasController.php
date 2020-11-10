@@ -53,9 +53,11 @@ class CuotasController extends Controller
      * @param  \App\Models\Tipo_cuotas  $tipo_cuotas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tipo_cuotas $tipo_cuotas)
+    public function edit($id)
     {
-        //
+        $cuota = DB::select('execute cuota_por_id ?', array($id));
+        return View('editarCuota')->with('cuota', $cuota);
+
     }
 
     /**
@@ -67,7 +69,12 @@ class CuotasController extends Controller
      */
     public function update(Request $request, Tipo_cuotas $tipo_cuotas)
     {
-        //
+        $id = $request->get('id');
+        $tipo = $request->get('tipo');
+        $cantidad = $request->get('cantidad');
+        $values = [$id,$tipo, $cantidad];
+        DB::insert("execute actualizar_tipo_cuota ?,?,?", $values);
+        return redirect('/cuotas')->with('success', 'se actualizó la cuota');
     }
 
     /**

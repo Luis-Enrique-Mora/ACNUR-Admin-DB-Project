@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cuotas</title>
+    <title>Agregar cuota</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="/resources/css/app.css">
 </head>
 <body>
+
     <style>
-        #cuotas{
+        form{
             margin-top: 50px;
-             margin: auto;
-        }
-        h2{
-             margin-top: 50px;
         }
 
         .fas:hover{
@@ -23,11 +19,12 @@
         }
 
         #head{
-                margin: auto;
-            }
+            margin: auto;
+        }
 
-        #addBtn{
+        button{
             margin-top: 50px;
+            margin: auto;
         }
 
         a:hover{
@@ -60,46 +57,33 @@
         </div>
     </nav>
 
-    <div id="head" class="row col-10">
-        <div class="col-10">
-            <h2>Cuotas ACNUR</h2>
-        </div>
-        <div id="addBtn" class="col-2">
-            <button onclick="window.location='/agregarCuota'" class="btn btn-success"><i class="fas fa-plus-square"></i></button>
-        </div>
+    <div class="container">
+    <form method="POST" action="/cuota/update/">
+                @csrf
+                <h2>Editar cuota</h2>
+                <hr>
+                <div class="row">
+                    @foreach($cuota as $cuotas)
+                        <input hidden name="id" value="{{$cuotas->cuota_id}}" type="number">
+                        <div class="col">
+                            <input type="text" value="{{$cuotas->tipo}}" class="form-control" name="tipo" placeholder="Nombre cuota" required>
+                        </div>
+
+                        <div class="col">
+                            <input type="text" value="{{$cuotas->cantidad}}" class="form-control" name="cantidad" placeholder="Monto" required>
+                        </div>
+
+                    @endforeach
+                </div>
+
+                <div class="container">
+                    <button type="submit" class="mt-5 col-5 btn btn-success btn-block">Actualizar</button> 
+                </div>
+            </form>
+
     </div>
-    
-    <table class="table table-hover col-10" id="cuotas">
-        <thead>
-            <tr>
-                <th>ID cuota</th>
-                <th>Tipo</th>
-                <th>monto</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($tipo_cuota as $cuota)
-            <tr>
-                <td>{{ $cuota->cuota_id }}</td>
-                <td>{{ $cuota->tipo }}</td>
-                <td>{{ $cuota->cantidad }}</td>
-                <td>
-                    <form action="{{url('cuota/delete/' .$cuota->cuota_id)}}" method="post">
-                        @csrf
-                        <input name="_method" type="hidden" value="DELETE">
-                        <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
-                    </form>
-                </td>
-                <td>
-                    <a href="{{url('/cuota/edit/' .$cuota->cuota_id)}}"><i class="fas fa-edit"></i></a>
-                </td> 
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>
-
-

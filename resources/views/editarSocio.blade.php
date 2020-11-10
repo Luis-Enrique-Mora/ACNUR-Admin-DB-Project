@@ -62,7 +62,7 @@
             <form method="POST" action="{{url('socio/update/' .$socios->socio_id)}}">
             @endforeach
                 @csrf
-                <h2>Agregar socio</h2>
+                <h2>Editar socio</h2>
                 <hr>
                 <div class="row">
                 @foreach($socio as $socios)

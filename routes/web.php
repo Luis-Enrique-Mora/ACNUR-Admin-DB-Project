@@ -34,10 +34,13 @@ Route::post('/sede/add', [SedesController::class, 'store']);
 Route::get('/agregarCuota', function () {
     return view('agregarCuota');
 });
+
 Route::delete('socio/delete/{id}', [SociosController::class, 'destroy']);
 Route::delete('cuota/delete/{id}', [CuotasController::class, 'destroy']);
 Route::delete('sede/delete/{id}', [SedesController::class, 'destroy']);
 Route::get('/socio/edit/{id}', [SociosController::class, 'edit']);
+Route::get('/cuota/edit/{id}', [CuotasController::class, 'edit']);
+Route::post('/cuota/update/', [CuotasController::class, 'update']);
 Route::post('socio/update/{id}', [SociosController::class, 'update']);
 
 Route::get('/agregarSede', function () {
