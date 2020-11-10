@@ -96,7 +96,7 @@ class SociosController extends Controller
         $sede_fk = $request->get("sede_fk");
         $values = [$id, $nombre, $apellido1, $apellido2, $direccion, $fecha_pago, $cuenta_bancaria, $tipo_cuota_fk, $sede_fk];
         
-        DB::update("execute actualizar_socio ?,?,?,?,?,?,?,?,?", $values);
+        DB::insert("execute actualizar_socio ?,?,?,?,?,?,?,?,?", $values);
         return redirect('/socios')->with('success', 'se actualizó el socio');
     }
 

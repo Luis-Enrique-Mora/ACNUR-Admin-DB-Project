@@ -58,8 +58,9 @@
         </div>
     </nav>
         <div class="container col-10">
-
-            <form method="POST" action="{{url('socio/update' .$socio->socio_id)}}">
+             @foreach($socio as $socios)
+            <form method="POST" action="{{url('socio/update/' .$socios->socio_id)}}">
+            @endforeach
                 @csrf
                 <h2>Agregar socio</h2>
                 <hr>
@@ -113,9 +114,6 @@
                      
                     <div class="col">
                         <select type="text" name="tipo_cuota_fk" class="form-control" required>
-                            @foreach($socio as $socios)
-                                <option value="{{$socios->cuota_id}}" disabled selected>{{$socios->tipo}}</option>
-                            @endforeach
                             @foreach($cuotas as $cuota)
                                 <option value="{{$cuota->cuota_id}}">{{ $cuota->cantidad }}</option>
                             @endforeach
