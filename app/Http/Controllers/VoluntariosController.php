@@ -35,13 +35,22 @@ class VoluntariosController extends Controller
 
     public function edit($id)
     {
-        
+        $voluntarios = DB::select('execute SP_BuscarVoluntariosID ?', array($id));
+        $sedes = DB::select('select * from View_sede_voluntario');
+        return View('editarVoluntario', compact('sedes','voluntarios'));
     }
 
     public function update(Request $request, $id)
     {
-
         
+        $nombre= $request->get("nombre");
+        $apellido1 = $request->get("apellido1");
+        $apellido2 = $request->get("apellido2");
+        $sede_fk = $request->get("sede_fk");
+        $values = [$nombre, $apellido1, $apellido2, $sede_fk];
+
+        DB::update("Execute SP_ActualizarVoluntarios ?,?,?,?", $values, array($id));
+        return redirect('/voluntarios')->with('success', 'se actualizó el voluntario'); 
     }
 
     public function destroy($id)

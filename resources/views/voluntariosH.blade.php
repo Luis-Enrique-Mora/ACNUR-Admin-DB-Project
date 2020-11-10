@@ -113,7 +113,9 @@
                             <button class="btn" onclick="return confirm('¿Esta seguro que desea eliminarlo?')" type="submit"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
-                <td><i class="fas fa-edit"></i></td>
+                    <td>
+                        <a href="{{url('/voluntarioH/edit/' .$vol->voluntarioH_id)}}"><i class="fas fa-edit"></i></a>
+                    </td>
             
             </tr>
             @endforeach

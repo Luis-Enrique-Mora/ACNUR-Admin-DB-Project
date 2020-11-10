@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Agregar socio</title>
+        <title>Agregar Voluntarios</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     </head>
@@ -28,10 +28,6 @@
             margin: auto;
         }
 
-        a:hover{
-                cursor: pointer;
-            }
-
     </style>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -53,46 +49,42 @@
                 <li class="nav-item">
                 <a onclick="window.location='/cuotas'" class="nav-link">Coutas</a>
                 </li>
+                <li class="nav-item">
+                <a onclick="window.location='/voluntarios'" class="nav-link">Voluntarios</a>
+                </li>
                 </ul>
             </div>
         </div>
     </nav>
         <div class="container col-10">
-             @foreach($voluntarios as $vol)
-            <form method="POST" action="{{url('voluntario/update/' .$vol->voluntario_id)}}">
+
+        @foreach($voluntariosH as $vol)
+            <form method="POST" action="{{url('voluntarioH/update/' .$vol->voluntarioH_id)}}">
             @endforeach
                 @csrf
-                <h2>Actualizar Voluntario</h2>
+                <h2>Agregar Voluntario</h2>
                 <hr>
                 <div class="row">
-                @foreach($voluntarios as $vol)
+                @foreach($voluntariosH as $vol)
                     <div class="col">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{$vol->nombre}}" required>
+                        <input type="text" class="form-control" name="profesion" value="{{$vol->profesion}}" placeholder="Profesion" >
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="apellido1" placeholder="Primer Apellido" value="{{$vol->apellido1}}" required>
+                        <input type="text" class="form-control" name="disponibilidad" value="{{$vol->disponibilidad}}" placeholder="Disponibilidad" >
                     </div>
 
                     <div class="col">
-                        <input type="text" class="form-control" name="apellido2" placeholder="Segundo Apellido" value="{{$vol->apellido2}}" required>
+                        <input type="text" class="form-control" name="cantidad_de_trabajos" value="{{$vol->cantidad_de_trabajos}}" placeholder="Cantidad de trabajos " >
                     </div>
-                @endforeach
+                    @endforeach
                     
-                
-                    <div class="col">
-                        <select type="text" name="sede_fk" class="form-control" placeholder="Sede">
-                        @foreach($sedes ?? '' as $sede)    
-                        <option value="{{$sede->sede_id}}" disabled selected>Seleccione sede</option>
-                        @endforeach
-                            @foreach($sedes ?? '' as $sede)
-                                <option value="{{$sede->sede_id}}">{{ $sede->nombre_sede }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
 
                 </div>
+
+               
+
+                
 
                 <div class="container">
                     <button type="submit" class="mt-5 col-5 btn btn-success btn-block">Actualizar</button> 
