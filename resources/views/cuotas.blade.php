@@ -35,9 +35,12 @@
             }
     </style>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">ACNUR Systems</a>
+        <a class="navbar-brand text-white" id="Inicio">
+    <img src="logo.jpeg"  height="85px">
+    </a>
+           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -113,13 +116,8 @@
                     </form>
                 </td>
                 <td>
-<<<<<<< HEAD
-                        <a href="{{url('/cuota/edit/' .$cuota->cuota_id)}}"><i class="fas fa-edit"></i></a>
-                    </td>
-=======
                     <a href="{{url('/cuota/edit/' .$cuota->cuota_id)}}"><i class="fas fa-edit"></i></a>
                 </td> 
->>>>>>> 9391ff0ab571e77f8e0e448eb4069934f80b7708
             </tr>
             @endforeach
         </tbody>

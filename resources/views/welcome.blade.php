@@ -10,7 +10,10 @@
     </head>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">ACNUR Systems</a>
+        <a class="navbar-brand text-white" id="Inicio">
+    <img src="logo.jpeg"  height="85px">
+    </a>
+           
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
